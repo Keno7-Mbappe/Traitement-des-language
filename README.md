@@ -137,7 +137,7 @@ Le site existe en thème clair (beige) et sombre (espresso), choisi par le syst�
 
 ### Mise en ligne (Render)
 
-L'application peut tourner sur Render (service web gratuit) au lieu de l'ordinateur. Le dépôt GitHub contient tout ce qu'il faut : `requirements-web.txt` (dépendances de l'application seule), `application_django/` et ses `artefacts/`. Réglages du service :
+**Application en ligne : https://scriptorium-taln.onrender.com** (dépôt : https://github.com/Keno7-Mbappe/Traitement-des-language). Elle tourne sur Render (service web gratuit) au lieu de l'ordinateur ; chaque publication sur la branche `main` la met à jour toute seule. Le dépôt GitHub contient tout ce qu'il faut : `requirements-web.txt` (dépendances de l'application seule), `application_django/` et ses `artefacts/`. Réglages du service :
 
 | Réglage | Valeur |
 |---|---|
