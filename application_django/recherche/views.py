@@ -99,6 +99,17 @@ def chiffres_accueil():
     }
 
 
+def questions_pretes_groupees():
+    """Questions prêtes (vecteurs en cache) groupées par langue pour l'affichage : ([{code, nom, questions}], nombre)."""
+    pretes = moteur.questions_pretes()
+    groupes = []
+    for code in ("fr", "en", "so"):
+        questions = [q["requete"] for q in pretes if q["langue"] == code]
+        if questions:
+            groupes.append({"code": code, "nom": LANGUES[code], "questions": questions})
+    return groupes, len(pretes)
+
+
 def accueil(request):
     """Page de recherche : formulaire, exemples et top 3 des passages."""
     requete, methode, erreur = lire_parametres(request)
@@ -141,8 +152,11 @@ def accueil(request):
     options = []
     for cle, libelle in moteur.METHODES.items():
         ok, raison = moteur.disponibilite(cle)
-        options.append({"cle": cle, "libelle": libelle, "disponible": ok, "raison": raison, **PRESENTATION[cle]})
+        etat = "absent" if not ok else "cache" if raison == "questions déjà calculées seulement" else "service"
+        options.append({"cle": cle, "libelle": libelle, "disponible": ok, "raison": raison, "etat": etat, **PRESENTATION[cle]})
     contexte["options"] = options
+    contexte["methodes_sans_service"] = any(o["etat"] != "service" and o["cle"] != "tfidf" for o in options)
+    contexte["pretes"], contexte["nb_pretes"] = questions_pretes_groupees()
     contexte["libelle_utilise"] = moteur.METHODES[contexte["methode_utilisee"]]
     contexte["carte"] = donnees_carte(requete if contexte["resultats"] is not None else "",
                                       contexte["methode_utilisee"], contexte["resultats"])

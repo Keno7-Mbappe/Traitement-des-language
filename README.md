@@ -114,7 +114,7 @@ Le site existe en thème clair (beige) et sombre (espresso), choisi par le syst�
   python manage.py runserver
   ```
 
-  `preparer_en_ligne` vérifie que le service en ligne renvoie les mêmes vecteurs que le notebook, puis garde en cache les vecteurs des questions d'exemple (elles marcheront même sans connexion).
+  `preparer_en_ligne` vérifie que le service en ligne renvoie les mêmes vecteurs que le notebook, puis garde en cache les vecteurs des questions d'exemple (elles marcheront même sans connexion). Avec `--evaluation`, il fait de même pour les 83 requêtes du jeu d'évaluation. **Rien n'est mis en cache si le service n'est pas fidèle au notebook** (cosinus inférieur à 0,99 sur les passages de contrôle).
 - Le jeton n'est lu que dans la variable d'environnement, il n'est ni affiché ni enregistré.
 - **Autre solution, sans Hugging Face : un serveur d'embeddings sur Colab.** Le notebook `Serveur_Embeddings_Colab.ipynb` fait tourner les deux mêmes modèles (e5-small et LaBSE) sur Colab et les rend joignables par une adresse temporaire (tunnel Cloudflare, sans compte). Aucun jeton n'est nécessaire.
   1. Ouvrir `Serveur_Embeddings_Colab.ipynb` dans Colab et exécuter les cellules dans l'ordre (chargement des modèles : 1 à 3 minutes).
@@ -133,7 +133,11 @@ Le site existe en thème clair (beige) et sombre (espresso), choisi par le syst�
 - Si le port 8000 est déjà utilisé sur l'ordinateur, lancer `python manage.py runserver 8001` et ouvrir http://127.0.0.1:8001.
 - Si une méthode n'est pas disponible (pas de jeton ni de serveur, pas de connexion, erreur du service, cellule Colab arrêtée), l'application le dit et affiche les résultats TF-IDF.
 - **API JSON** : `http://127.0.0.1:8000/api/recherche/?q=bibliotheque%20horaires&methode=tfidf` (mêmes champs que la fonction `reponse_api` du notebook).
-- **Tests** : `python manage.py test` (94 tests, sans réseau, sans jeton, sans Colab : les services en ligne sont simulés, le vrai code du serveur Colab est testé avec de faux modèles, et les pages, le surlignage, la carte et la cohérence des résultats avec ce README sont contrôlés).
+- **Tests** : `python manage.py test` (104 tests, sans réseau, sans jeton, sans Colab : les services en ligne sont simulés, le vrai code du serveur Colab est testé avec de faux modèles, et les pages, le surlignage, la carte et la cohérence des résultats avec ce README sont contrôlés).
+
+### Questions prêtes (fonctionnent sans service)
+
+Le dépôt contient `artefacts/cache_vecteurs_requetes.json` (vecteurs e5-small et LaBSE de 83 questions, calculés par le serveur Colab après vérification) et `artefacts/questions_pretes.json` (leur liste). Ces questions marchent avec **toutes** les méthodes, même quand aucun service d'embeddings n'est branché, par exemple sur le site en ligne : la page de recherche les liste. Recalculées uniquement à partir de ce cache, les cinq méthodes redonnent exactement les résultats du notebook (Hit@3 et MRR identiques sur les 63 requêtes de test) ; un test le vérifie. Toute autre question retombe sur TF-IDF, ou utilise le service s'il est branché.
 
 ### Mise en ligne (Render)
 

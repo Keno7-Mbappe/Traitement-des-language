@@ -16,6 +16,7 @@ from decimal import ROUND_HALF_UP, Decimal
 from io import StringIO
 from pathlib import Path
 from unittest import mock, skipUnless
+from urllib.parse import quote
 
 import numpy as np
 from django.core.management import call_command
@@ -23,7 +24,7 @@ from django.core.management.base import CommandError
 from django.test import SimpleTestCase
 from django.urls import reverse
 
-from . import donnees_resultats, moteur
+from . import donnees_resultats, moteur, views
 
 DIMENSIONS = {"intfloat/multilingual-e5-small": 384, "sentence-transformers/LaBSE": 768}
 
@@ -72,6 +73,7 @@ class IsoleTestCase(SimpleTestCase):
         dossier = tempfile.TemporaryDirectory()
         self.addCleanup(dossier.cleanup)
         for patch in (mock.patch.object(moteur, "FICHIER_CACHE", Path(dossier.name) / "cache.json"),
+                      mock.patch.object(moteur, "FICHIER_QUESTIONS", Path(dossier.name) / "questions_pretes.json"),
                       mock.patch.object(moteur, "modele_local_pret", return_value=False)):
             patch.start()
             self.addCleanup(patch.stop)
@@ -822,3 +824,134 @@ class ResultatsDonneesTests(SimpleTestCase):
         somali = {ligne["nom"]: ligne["valeurs"][2] for ligne in langues["lignes"]}
         self.assertGreater(somali["TF-IDF"], somali["e5-small"], "en somali, TF-IDF devance e5-small")
         self.assertGreater(somali["e5-small"], somali["LaBSE"])
+
+
+# ----------------------------------------------------------------------------------------------- questions prêtes et cache
+class QuestionsPretesTests(IsoleTestCase):
+    def fichier_requetes(self, lignes):
+        dossier = tempfile.TemporaryDirectory()
+        self.addCleanup(dossier.cleanup)
+        chemin = Path(dossier.name) / "requetes.csv"
+        chemin.write_text("id,requete,langue,type,faits,partition\n" + "\n".join(lignes) + "\n", encoding="utf-8")
+        return str(chemin)
+
+    def test_service_infidele_ne_remplit_jamais_le_cache(self):
+        self.avec_jeton_et_faux_client(FauxClient())                     # vecteurs au hasard : pas ceux du notebook
+        sortie = StringIO()
+        call_command("preparer_en_ligne", stdout=sortie)
+        self.assertIn("NON mises en cache", sortie.getvalue())
+        self.assertEqual(moteur.lire_cache(), {})
+        self.assertEqual(moteur.questions_pretes(), [])
+
+    def test_exemples_prets_apres_une_preparation_fidele(self):
+        self.avec_jeton_et_faux_client(FauxClient(fidele=True))
+        call_command("preparer_en_ligne", stdout=StringIO())
+        pretes = moteur.questions_pretes()
+        self.assertEqual(len(pretes), 6)
+        self.assertEqual({q["langue"] for q in pretes}, {"fr", "en", "so"})
+        self.assertEqual({q["type"] for q in pretes}, {"exemple", "cas difficile"})
+
+    def test_evaluation_ajoute_les_requetes_du_fichier(self):
+        fichier = self.fichier_requetes(["Q1,Où est la bibliothèque ?,fr,mots_communs,horaires_bibliotheque,test",
+                                         "Q2,Where is the library?,en,mots_communs,horaires_bibliotheque,dev",
+                                         "Q3,  Maktabaddu   waa   furan ,so,court,horaires_bibliotheque,test",
+                                         "Q4,Combien coûtent les frais de scolarité en Master ?,fr,mots_communs,montant_frais,test"])
+        self.avec_jeton_et_faux_client(FauxClient(fidele=True))
+        sortie = StringIO()
+        call_command("preparer_en_ligne", "--evaluation", f"--fichier-requetes={fichier}", stdout=sortie)
+        pretes = {q["requete"]: q for q in moteur.questions_pretes()}
+        self.assertEqual(len(pretes), 9, "6 exemples + 3 requêtes nouvelles (Q4 est déjà un exemple)")
+        self.assertEqual(pretes["Où est la bibliothèque ?"]["type"], "évaluation")
+        self.assertIn("Maktabaddu waa furan", pretes, "espaces nettoyés comme dans la recherche")
+        self.assertEqual(pretes["Where is the library?"]["langue"], "en")
+        self.assertIn("Tout est prêt", sortie.getvalue())
+
+    def test_fichier_de_requetes_introuvable(self):
+        self.avec_jeton_et_faux_client(FauxClient(fidele=True))
+        with self.assertRaisesMessage(CommandError, "introuvable"):
+            call_command("preparer_en_ligne", "--evaluation", "--fichier-requetes=/n-existe-pas.csv", stdout=StringIO())
+
+    def test_une_question_n_est_prete_que_si_tous_les_modeles_l_ont(self):
+        moteur.ajouter_au_cache("embeddings", "seulement e5", np.ones(384))
+        moteur.FICHIER_QUESTIONS.write_text(json.dumps([{"requete": "seulement e5", "langue": "fr", "type": "exemple"}]), encoding="utf-8")
+        self.assertEqual(moteur.questions_pretes(), [])
+        moteur.ajouter_au_cache("labse", "seulement e5", np.ones(768))
+        self.assertEqual(len(moteur.questions_pretes()), 1)
+
+    def test_sans_service_ni_cache_message_clair(self):
+        html = self.client.get(reverse("accueil")).content.decode()
+        self.assertEqual(html.count("service non branché"), 4)
+        self.assertNotIn("indisponible ici", html)
+        self.assertIn("aucun service d'embeddings n'est branché sur ce site", html)
+        self.assertNotIn("questions prêtes pour toutes les méthodes", html)
+
+    def test_site_avec_cache_seulement(self):
+        """Comme le site en ligne sans service : les questions préparées marchent, les autres retombent sur TF-IDF."""
+        self.avec_jeton_et_faux_client(FauxClient(fidele=True))
+        call_command("preparer_en_ligne", stdout=StringIO())
+        os.environ.pop("HF_TOKEN")
+        self.reinitialiser_caches()
+        html = self.client.get(reverse("accueil")).content.decode()
+        self.assertEqual(html.count("questions prêtes seulement"), 4)
+        self.assertIn("6 questions prêtes pour toutes les méthodes", html)
+        self.assertIn("marchent pour les <strong>6 questions prêtes</strong>", html)
+        self.assertNotIn("disabled", html.split('<fieldset class="methodes">')[1].split("</fieldset>")[0])
+        prete = views.EXEMPLES_QUI_MARCHENT[0]
+        reponse = self.client.get(reverse("accueil"), {"q": prete, "methode": "melange"})
+        self.assertNotContains(reponse, "pas disponible sur cet ordinateur")
+        self.assertContains(reponse, "Mélange TF-IDF + e5-small")
+        reponse = self.client.get(reverse("accueil"), {"q": "une question jamais préparée", "methode": "melange"})
+        self.assertContains(reponse, "pas disponible sur cet ordinateur")
+        self.assertContains(reponse, "Les résultats ci-dessous viennent de la méthode TF-IDF")
+
+    def test_les_questions_prretes_sont_des_liens_de_recherche(self):
+        self.avec_jeton_et_faux_client(FauxClient(fidele=True))
+        call_command("preparer_en_ligne", stdout=StringIO())
+        html = self.client.get(reverse("accueil")).content.decode()
+        self.assertIn("pretes__liste", html)
+        self.assertIn(f"?q={quote(views.EXEMPLES_QUI_MARCHENT[1])}", html)
+
+
+class CacheFourniTests(SimpleTestCase):
+    """Le cache publié avec le site (vecteurs de 83 questions, calculés par le serveur Colab vérifié) doit redonner exactement
+    les résultats du notebook, sans aucun service en ligne."""
+
+    def setUp(self):
+        environnement = mock.patch.dict(os.environ)
+        environnement.start()
+        self.addCleanup(environnement.stop)
+        for variable in ("HF_TOKEN", "PROJET8_MODE", "PROJET8_SERVEUR", "PROJET8_CLE"):
+            os.environ.pop(variable, None)
+        patch = mock.patch.object(moteur, "modele_local_pret", return_value=False)
+        patch.start()
+        self.addCleanup(patch.stop)
+        moteur._cache["charge"] = None
+        moteur.vecteur_requete.cache_clear()
+        self.addCleanup(lambda: (moteur._cache.update(charge=None), moteur.vecteur_requete.cache_clear()))
+
+    def test_cache_fourni_reproduit_les_resultats_du_notebook(self):
+        requetes = RACINE_PROJET / "data" / "requetes.csv"
+        if not (requetes.exists() and moteur.FICHIER_CACHE.exists() and moteur.FICHIER_QUESTIONS.exists()):
+            self.skipTest("cache ou jeu de requêtes absent")
+        import pandas as pd
+        test = pd.read_csv(requetes, encoding="utf-8-sig").fillna("").query("partition == 'test'")
+        faits = [set(f.split(";")) if f else set() for f in moteur.charger_passages()["faits"]]
+        attendu = {"tfidf": (50, 0.708), "embeddings": (50, 0.702), "labse": (36, 0.523), "melange": (53, 0.792), "melange_labse": (52, 0.742)}
+        self.assertEqual(len(moteur.questions_pretes()), 83)
+        for methode, (nb_reussies, mrr) in attendu.items():
+            hits, rrs = 0, []
+            for _, r in test.iterrows():
+                bonnes = {i for i, f in enumerate(faits) if f & set(r["faits"].split(";"))}
+                classement = moteur.classer(moteur.scores(moteur.nettoyer(r["requete"]), methode))
+                rang = next((k + 1 for k, i in enumerate(classement) if i in bonnes), None)
+                hits += bool(rang and rang <= 3)
+                rrs.append(1 / rang if rang else 0.0)
+            self.assertEqual(hits, nb_reussies, f"{methode} : requêtes réussies en top 3")
+            self.assertAlmostEqual(float(np.mean(rrs)), mrr, places=3, msg=f"{methode} : MRR")
+
+    def test_les_questions_pretes_sont_toutes_utilisables_sans_service(self):
+        if not moteur.FICHIER_QUESTIONS.exists():
+            self.skipTest("liste absente")
+        for q in moteur.questions_pretes()[:10]:
+            for methode in ("embeddings", "labse", "melange", "melange_labse"):
+                self.assertEqual(len(moteur.rechercher(q["requete"], methode)), 3, (q["requete"], methode))

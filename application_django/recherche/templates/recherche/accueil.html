@@ -37,11 +37,14 @@
               <input type="radio" name="methode" value="{{ o.cle }}" {% if o.cle == methode %}checked{% endif %} {% if not o.disponible %}disabled{% endif %}>
               <span class="methode__carte">
                 <span class="methode__nom">{{ o.court }}{% if o.etiquette %}<em class="etiquette">{{ o.etiquette }}</em>{% endif %}</span>
-                <span class="methode__detail">{% if not o.disponible %}indisponible ici{% elif o.raison %}{{ o.raison }}{% else %}{{ o.detail }}{% endif %}</span>
+                <span class="methode__detail">{% if o.etat == "absent" %}service non branché{% elif o.etat == "cache" %}questions prêtes seulement{% elif o.raison %}{{ o.raison }}{% else %}{{ o.detail }}{% endif %}</span>
               </span>
             </label>
             {% endfor %}
           </div>
+          {% if methodes_sans_service %}
+          <p class="methodes__note"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span>{% if nb_pretes %}Aucun service d'embeddings n'est branché en direct : e5, LaBSE et les mélanges marchent pour les <strong>{{ nb_pretes }} questions prêtes</strong> (liste plus bas) ; toute autre question retombe sur TF-IDF.{% else %}Les méthodes grisées calculent le vecteur de la question avec un modèle : aucun service d'embeddings n'est branché sur ce site. TF-IDF fonctionne seul.{% endif %}</span></p>
+          {% endif %}
         </fieldset>
 
         <div class="composeur__pied">
@@ -56,10 +59,12 @@
 
       {% if resultats is None %}
       <div class="exemples monter" style="--d:4">{% include "recherche/_exemples.html" %}</div>
+      <div class="monter" style="--d:5">{% include "recherche/_pretes.html" %}</div>
       {% else %}
       <details class="exemples-repli">
         <summary><svg class="ico" aria-hidden="true"><use href="#i-etincelle"/></svg>Autres exemples à essayer<svg class="ico exemples-repli__chevron" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
         <div class="exemples">{% include "recherche/_exemples.html" %}</div>
+        {% include "recherche/_pretes.html" %}
       </details>
       {% endif %}
     </div>

@@ -41,6 +41,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 DOSSIER_ARTEFACTS = Path(__file__).resolve().parent.parent / "artefacts"
 FICHIER_CACHE = DOSSIER_ARTEFACTS / "cache_vecteurs_requetes.json"
+FICHIER_QUESTIONS = DOSSIER_ARTEFACTS / "questions_pretes.json"     # questions dont les vecteurs sont dans le cache (écrit par preparer_en_ligne)
 DELAI_EN_LIGNE = 30          # secondes d'attente maximale pour une réponse du service en ligne
 AGENT_HTTP = "projet8-recherche/1.0"     # identifiant générique envoyé au serveur Colab (aucune donnée personnelle)
 K = 3
@@ -120,6 +121,17 @@ def ajouter_au_cache(methode, requete, vecteur):
 
 def requetes_en_cache(methode):
     return [cle.split("|", 1)[1] for cle in lire_cache() if cle.startswith(f"{methode}|")]
+
+
+def questions_pretes():
+    """Questions [{requete, langue, type}] dont le vecteur est en cache pour TOUS les modèles : elles marchent avec toutes les
+    méthodes à embeddings, même quand aucun service n'est branché."""
+    try:
+        liste = json.loads(FICHIER_QUESTIONS.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return []
+    cache = lire_cache()
+    return [q for q in liste if all(f"{m}|{q['requete']}" in cache for m in MODELES)]
 
 
 # ----------------------------------------------------------------------------------------------- modes d'embeddings

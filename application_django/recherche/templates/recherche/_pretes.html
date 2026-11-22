@@ -1,0 +1,12 @@
+{% if pretes %}
+<details class="pretes">
+  <summary><svg class="ico" aria-hidden="true"><use href="#i-valider"/></svg>{{ nb_pretes }} questions prêtes pour toutes les méthodes<svg class="ico pretes__chevron" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+  <p class="note">Leurs vecteurs sont enregistrés avec le site : elles marchent avec e5-small, LaBSE et les mélanges, même sans service en ligne. Elles comprennent les requêtes du jeu d'évaluation.</p>
+  {% for g in pretes %}
+  <div class="pretes__groupe">
+    <span class="pastille pastille--{{ g.code }}"><i></i>{{ g.nom }}</span>
+    <ul class="pretes__liste">{% for q in g.questions %}<li><a class="puce puce--petite" href="{% url 'accueil' %}?q={{ q|urlencode }}&methode={{ methode }}">{{ q }}</a></li>{% endfor %}</ul>
+  </div>
+  {% endfor %}
+</details>
+{% endif %}

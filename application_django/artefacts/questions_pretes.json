@@ -1,0 +1,417 @@
+[
+ {
+  "requete": "Combien coûtent les frais de scolarité en Master ?",
+  "langue": "fr",
+  "type": "exemple"
+ },
+ {
+  "requete": "Do I need a visa to study here?",
+  "langue": "en",
+  "type": "exemple"
+ },
+ {
+  "requete": "Maktabaddu goorma ayay furan tahay?",
+  "langue": "so",
+  "type": "exemple"
+ },
+ {
+  "requete": "Je n'ai plus d'argent pour payer ma scolarité, que faire ?",
+  "langue": "fr",
+  "type": "cas difficile"
+ },
+ {
+  "requete": "I cannot afford my tuition at the moment, what are my options?",
+  "langue": "en",
+  "type": "cas difficile"
+ },
+ {
+  "requete": "Sideen u codsadaa deeq waxbarasho?",
+  "langue": "so",
+  "type": "cas difficile"
+ },
+ {
+  "requete": "Quelles pièces faut-il fournir pour s'inscrire au Master ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Peut-on payer les frais de scolarité en deux versements ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Comment réinitialiser mon mot de passe ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Quelles sont les dates des examens du premier semestre ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Comment est calculée la note finale d'un module ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Quel est le délai pour déposer un certificat médical ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Comment postuler en Master ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Puis-je repasser un examen que j'ai raté ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Mon compte est bloqué, qui peut m'aider ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Comment contester ma note d'examen ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Est-ce que je risque d'être exclu si je sèche trop de cours ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Quelle mention vais-je avoir avec 13 de moyenne ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Y a-t-il un bus pour aller à l'université ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Où trouver un logement étudiant ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "bibliotheque horaires",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "recu paiement",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "mdp oublie",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "duree stage",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "wifi campus",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "What documents are required for registration?",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "How can I pay my tuition in two instalments?",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "How do I appeal an exam grade?",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "What are the library opening hours?",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "How many books can I borrow and for how long?",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Can I renew a borrowed book?",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Are there scholarships for students with low income?",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "How many classes can I skip before getting a warning?",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "I was sick and missed class, what should I bring?",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Is there a second chance if I fail a course?",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "I can't log in anymore after several attempts",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Who helps me find a placement in a company?",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "What is the penalty for plagiarism in a report?",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "How is my final degree classified?",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "student card lost",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "exam dates",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Dukumentiyo maxaa loo baahan yahay diiwaangelinta?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Sideen u bixiyaa lacagta waxbarashada laba qaybood?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Sidee u helaa warqadda caddeynta ardaynimada?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Waxaan illoobay erayga sirta ah ee madasha waxbarashada",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Basaska jaamacadda goorma ayay kacaan?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Imisa jeer ayaan casharka ka maqnaan karaa?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Lacag uma haysto waxbarashada, maxaan sameeyaa?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Waan xanuunsaday oo fasalka ka maqnaa, maxaan keenaa?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Haddii aan imtixaanka ku fashilmo, fursad kale miyaa jirta?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Sideen ugu gudbaa fasalka sare?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Akoonkayga waa la xiray, yaa furi kara?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Yaa i caawin kara inaan helo tababar shaqo?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Sideen cabasho uga gudbiyaa dhibcaha imtixaanka?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "rasiid lacag",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "visa arday shisheeye",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "kaarka ardayga",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Combien de crédits faut-il pour passer en Master 2 ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Que faire si j'ai été absent à un examen ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Comment obtenir un tiers-temps pour les examens ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Comment faire un virement pour payer mes frais ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Quelle est la durée d'une soutenance de mémoire ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Quels logiciels sont gratuits pour les étudiants ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Puis-je suspendre mes études pendant un an ?",
+  "langue": "fr",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Can I borrow a book from another library?",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "What happens if I lose a library book?",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Is there an orientation week for new students?",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Where can I see a doctor on campus?",
+  "langue": "en",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Makhaayadda jaamacadda goorma ayay furan tahay?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Sideen u beddelaa cinwaankayga?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Haddii aan lacagta ka daahiyo maxaa dhacaya?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Haddii aan casharka ka daahi shan iyo toban daqiiqo, macallinku ma ii diidi karaa?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Waan ka maqnaa imtixaanka, maxaa dhacaya?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Sideen u helaa waqti dheeraad ah imtixaanka haddii aan naafo ahay?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Imisa dhibcood ayaa semesterka lagu gudbaa?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Ma joojin karaa waxbarashadayda hal sannad?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Lacagta waxbarashada laba jeer ayaan bixiyay, sideen u soo celiyaa?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Sideen lacagta bangiga ugu wareejiyaa?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Waa maxay xeerarka erayga sirta ah?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Barnaamijyo bilaash ah ma jiraan ardayda?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Qolka salaadda xaggee ku yaal?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Goorma ayaan diblomada helayaa?",
+  "langue": "so",
+  "type": "évaluation"
+ },
+ {
+  "requete": "Imisa krediit ayaan u baahanahay si aan Master 2 u galo?",
+  "langue": "so",
+  "type": "évaluation"
+ }
+]

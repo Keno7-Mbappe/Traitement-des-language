@@ -788,3 +788,18 @@ mark { padding: 0 .1em; border-radius: 3px; color: inherit; font-weight: 600;
   .js [data-reveler]:not(.est-visible) .barre-ligne__barre { transform: scaleX(var(--v)); }
   .js [data-reveler]:not(.est-visible) .divergent__barre { transform: none; }
 }
+
+/* questions prêtes (vecteurs enregistrés) et note sur les méthodes sans service */
+.methodes__note { display: flex; align-items: flex-start; gap: 8px; margin: 12px 4px 0; font-size: .84rem; line-height: 1.5; color: var(--ink-3); }
+.methodes__note .ico { margin-top: 2px; flex: none; }
+.methodes__note strong { color: var(--ink-2); }
+.pretes { margin-top: 14px; }
+.pretes summary { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; font: 600 .88rem/1.2 var(--font-sans); color: var(--accent-ink); list-style: none; cursor: pointer; }
+.pretes summary::-webkit-details-marker { display: none; }
+.pretes summary .ico:first-child { color: var(--en-pt); }
+.pretes__chevron { transition: transform .35s var(--ease); }
+.pretes[open] .pretes__chevron { transform: rotate(180deg); }
+.pretes[open] > :not(summary) { animation: fondu .4s var(--ease) both; }
+.pretes__groupe { margin-top: 14px; }
+.pretes__liste { display: flex; flex-wrap: wrap; gap: 6px; max-height: 260px; margin: 10px 0 0; padding: 2px; overflow: auto; list-style: none; }
+.puce--petite { min-height: 34px; padding: 5px 12px; font-size: .82rem; }
