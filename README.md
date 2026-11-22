@@ -53,7 +53,7 @@ Projet Final/
 ├── requirements.txt                     dépendances du notebook et de l'application
 ├── requirements-web.txt                 dépendances de l'application seule (mise en ligne)
 ├── README.md
-├── Rapport_Projet8.pdf                  rapport
+├── Projet8_Rapport_Recherche_Semantique.pdf   rapport (8 pages) ; la version Word modifiable est à côté
 └── Soutenance_Projet8.pptx              diapositives
 ```
 
