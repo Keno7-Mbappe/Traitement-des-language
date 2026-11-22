@@ -1,0 +1,43 @@
+# DOCUMENT SYNTHÉTIQUE rédigé pour le projet TALN (M2 IAMD), inspiré des règlements universitaires usuels (système LMD). Dates, montants et règles sont fictifs. Les lignes qui commencent par # sont ignorées par le programme.
+
+UNIVERSITY LIBRARY REGULATIONS
+These regulations set out the rules for using the university library, its reading rooms and its digital resources. They apply to all students, teachers and administrative staff. Every user is expected to read them and to respect the other readers. The librarian may ask any person who does not follow the rules to leave the building.
+
+1. Opening hours
+The library is open from Sunday to Thursday, 8:00 to 18:00. It is closed on Fridays, Saturdays and public holidays. During the exam periods, closing time is extended to 20:00. The opening hours are posted at the entrance and on the university platform, and any change is announced at least three days in advance.
+
+2. Access and membership
+Students must show their valid student card to enter the lending area and to borrow documents. Visitors from other institutions need a day pass delivered at the front desk, on presentation of an identity document. Day passes do not allow borrowing. Membership is free for students whose tuition is paid, and it ends when the student leaves the university.
+
+3. Borrowing
+Each student may borrow up to three books at a time for a period of two weeks. Reference works, theses and the latest journal issues can only be consulted in the reading room. Teachers may borrow up to ten books for one month. Every loan is recorded at the desk with the student card, and the borrower is responsible for the books until they are returned.
+
+4. Renewal
+A loan can be renewed once for one additional week, at the desk or through the platform, provided that no other reader has reserved the book. The renewal must be requested before the due date. A book that has already been renewed once must be brought back to the library, even if nobody is waiting for it.
+
+5. Reservations
+A book that is currently on loan can be reserved at the desk or on the platform. The reader is told by message when the book is available and has three days to collect it; after that, the book goes back to the shelves. A reader can have at most two reservations at the same time.
+
+6. Late returns
+Late returns lead to a suspension of borrowing rights, with one day of suspension for each day of delay. Students with an overdue book cannot obtain their end-of-year documents, such as the transcript, until the book is returned. After thirty days of delay, the book is considered lost and the rules on lost items apply.
+
+7. Lost or damaged items
+A borrower who loses or damages a book must replace it with the same edition or pay its replacement value. The librarian will give the amount at the desk. Writing, underlining or tearing pages is considered as damage. Payment is made at the university cashier, and the receipt must be shown to the librarian to lift the borrowing suspension.
+
+8. Photocopying and scanning
+A photocopier and a scanner are available near the reading room. Copies are charged 10 FDJ per page, and scans to a USB key are free. The copying of a whole book is not allowed, in accordance with copyright rules: students may copy up to ten percent of a work for personal study.
+
+9. Study rooms
+Silence is required in the reading rooms; food and phone calls are not allowed. Group study rooms can be booked at the desk for up to two hours. A group must have at least three members, and the room is released if nobody arrives within fifteen minutes of the start of the booking. Bags must not be used to reserve seats.
+
+10. Computers in the library
+Twenty computers are available in the library for catalogue searches, online journals and word processing. They can be used for one hour at a time when other readers are waiting. The computers must not be used for games, video streaming or social networks. Personal laptops can be connected to the campus Wi-Fi.
+
+11. Digital resources
+Online journals and databases are available from any computer on the campus network, and from outside the campus with the student's platform account. The list of subscriptions is shown on the library page of the platform. Downloading whole journal issues with automatic tools is forbidden and may lead to the suspension of access for the whole university.
+
+12. Interlibrary loan
+When a book or an article is not available in the library, the librarian can ask another institution to lend it. The request is made at the desk with the title and the author. Delivery takes between one and three weeks, and the borrower pays the postage costs. Documents obtained in this way can only be consulted in the reading room.
+
+13. Conduct in the library
+Readers must leave the tables clean and put the books they consulted on the return trolleys instead of on the shelves. Phones must be silent. Any theft or attempted theft is reported to the dean and may lead to disciplinary action. Alarms may sound at the exit if a document has not been registered at the desk.

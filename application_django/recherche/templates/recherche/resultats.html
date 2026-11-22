@@ -1,0 +1,210 @@
+{% extends "recherche/base.html" %}
+{% load static l10n %}
+{% block titre %}Résultats de l'évaluation{% endblock %}
+{% block description %}Comparaison de TF-IDF, e5-small, LaBSE et des mélanges sur 63 requêtes de test : Precision@3, Hit@3 et MRR, résultats par langue, entre langues, causes d'erreur et étude du prétraitement.{% endblock %}
+{% block classe %}page-resultats{% endblock %}
+{% block scripts %}<script src="{% static 'recherche/js/pages.js' %}" defer></script>{% endblock %}
+
+{% block contenu %}{% localize off %}
+<section class="entete-page" aria-labelledby="titre-page">
+  <div class="entete-page__fond" aria-hidden="true"></div>
+  <div class="conteneur">
+    <p class="surtitre monter" style="--d:0"><span class="surtitre__point"></span>Résultats</p>
+    <h1 id="titre-page" class="monter" style="--d:1">Ce que les mesures <em class="souligne">disent<svg class="souligne__trait" viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9c40-8 86-9 130-4 30 3 58 3 84-1"/></svg></em></h1>
+    <p class="entete-page__chapeau monter" style="--d:2">{{ requetes_test.toutes }} requêtes de test, jamais utilisées pour régler, K = 3. Les valeurs viennent du notebook exécuté sur Colab.</p>
+
+    <ul class="kpi monter" style="--d:3">
+      <li class="kpi__carte kpi__carte--vedette">
+        <span class="kpi__etiquette">Meilleure méthode</span>
+        <span class="kpi__nombre"><span data-compter="{{ meilleure.toutes.hit }}" data-decimales="2">{{ meilleure.toutes.hit|floatformat:2 }}</span></span>
+        <span class="kpi__legende">Hit@3 · {{ meilleure.nom }}</span>
+      </li>
+      <li class="kpi__carte">
+        <span class="kpi__etiquette">Même méthode</span>
+        <span class="kpi__nombre"><span data-compter="{{ meilleure.toutes.mrr }}" data-decimales="2">{{ meilleure.toutes.mrr|floatformat:2 }}</span></span>
+        <span class="kpi__legende">MRR</span>
+      </li>
+      <li class="kpi__carte">
+        <span class="kpi__etiquette">Baseline</span>
+        <span class="kpi__nombre"><span data-compter="{{ base.toutes.hit }}" data-decimales="2">{{ base.toutes.hit|floatformat:2 }}</span></span>
+        <span class="kpi__legende">Hit@3 · TF-IDF seul</span>
+      </li>
+      <li class="kpi__carte">
+        <span class="kpi__etiquette">Plancher</span>
+        <span class="kpi__nombre"><span data-compter="{{ hasard.toutes.hit }}" data-decimales="2">{{ hasard.toutes.hit|floatformat:2 }}</span></span>
+        <span class="kpi__legende">Hit@3 · au hasard</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section--serree" aria-labelledby="titre-comparaison">
+  <div class="conteneur">
+    <header class="section__entete" data-reveler>
+      <p class="surtitre">Comparaison</p>
+      <h2 id="titre-comparaison">Les cinq méthodes face au hasard</h2>
+      <p class="section__chapeau">Le mélange TF-IDF + e5-small passe devant, de {{ ecart_requetes }} requêtes sur {{ requetes_test.toutes }} seulement en Hit@3. Une requête change le Hit@3 de 0,016 : l'écart de MRR est plus net, mais il reste modeste.</p>
+    </header>
+
+    <div class="comparateur" data-comparateur data-scenario="toutes" data-metrique="hit" data-reveler>
+      <div class="comparateur__commandes">
+        <div class="commande">
+          <span class="commande__titre" id="titre-scenario">Scénario</span>
+          <div class="segment" role="radiogroup" aria-labelledby="titre-scenario">
+            <label><input type="radio" name="scenario" value="toutes" checked><span>toutes_langues</span></label>
+            <label><input type="radio" name="scenario" value="meme"><span>meme_langue</span></label>
+          </div>
+        </div>
+        <div class="commande">
+          <span class="commande__titre" id="titre-metrique">Métrique</span>
+          <div class="segment" role="radiogroup" aria-labelledby="titre-metrique">
+            <label><input type="radio" name="metrique" value="hit" checked><span>Hit@3</span></label>
+            <label><input type="radio" name="metrique" value="mrr"><span>MRR</span></label>
+            <label><input type="radio" name="metrique" value="p"><span>Precision@3</span></label>
+          </div>
+        </div>
+        <p class="comparateur__requetes" aria-live="polite"><span data-nb-requetes>{{ requetes_test.toutes }}</span> requêtes de test dans ce scénario</p>
+      </div>
+
+      <ul class="barres" data-barres>
+        {% for m in methodes %}
+        <li class="barre-ligne {% if m.meilleur %}barre-ligne--meilleur{% endif %} {% if m.cle == 'hasard' %}barre-ligne--hasard{% endif %}"
+            data-p-toutes="{{ m.toutes.p }}" data-hit-toutes="{{ m.toutes.hit }}" data-mrr-toutes="{{ m.toutes.mrr }}"
+            data-p-meme="{{ m.meme.p }}" data-hit-meme="{{ m.meme.hit }}" data-mrr-meme="{{ m.meme.mrr }}"
+            style="--v:{{ m.toutes.hit }};--i:{{ forloop.counter0 }}">
+          <div class="barre-ligne__nom"><strong>{{ m.nom }}</strong>{% if m.meilleur %}<em class="etiquette">meilleur</em>{% elif m.cle == "tfidf" %}<em class="etiquette etiquette--sobre">baseline</em>{% endif %}<span>{{ m.detail }}</span></div>
+          <div class="barre-ligne__piste"><span class="barre-ligne__barre"></span></div>
+          <output class="barre-ligne__valeur" data-valeur>{{ m.toutes.hit|floatformat:2 }}</output>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <details class="tableau-details">
+        <summary>Voir toutes les valeurs<svg class="ico" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+        <div class="tableau-defile">
+          <table class="tableau">
+            <caption class="visuellement-cache">Precision@3, Hit@3 et MRR de chaque méthode dans les deux scénarios</caption>
+            <thead>
+              <tr><th rowspan="2" scope="col">Méthode</th><th colspan="3" scope="colgroup">toutes_langues ({{ requetes_test.toutes }} requêtes)</th><th colspan="3" scope="colgroup">meme_langue ({{ requetes_test.meme }} requêtes)</th></tr>
+              <tr><th scope="col">P@3</th><th scope="col">Hit@3</th><th scope="col">MRR</th><th scope="col">P@3</th><th scope="col">Hit@3</th><th scope="col">MRR</th></tr>
+            </thead>
+            <tbody>
+              {% for m in methodes %}
+              <tr {% if m.meilleur %}class="ligne-vedette"{% endif %}>
+                <th scope="row">{{ m.nom }}</th>
+                <td>{{ m.toutes.p|floatformat:3 }}</td><td>{{ m.toutes.hit|floatformat:3 }}</td><td>{{ m.toutes.mrr|floatformat:3 }}</td>
+                <td>{{ m.meme.p|floatformat:3 }}</td><td>{{ m.meme.hit|floatformat:3 }}</td><td>{{ m.meme.mrr|floatformat:3 }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="titre-langues">
+  <div class="conteneur">
+    <header class="section__entete" data-reveler>
+      <p class="surtitre">Par langue</p>
+      <h2 id="titre-langues">Le somali renverse le classement</h2>
+      <p class="section__chapeau">Hit@3 selon la langue de la question (scénario toutes_langues). Les embeddings sont meilleurs en anglais ; en somali, TF-IDF reprend la tête, et le mélange le suit.</p>
+    </header>
+    <div class="tableau-defile" data-reveler>
+      <table class="tableau tableau--chaleur">
+        <caption class="visuellement-cache">Hit@3 par méthode et par langue de la question</caption>
+        <thead><tr><th scope="col">Méthode</th>{% for code, nom, nb in colonnes_langues %}<th scope="col"><span class="pastille pastille--{{ code }}"><i></i>{{ nom }}</span><span class="tableau__effectif">{{ nb }} requêtes</span></th>{% endfor %}</tr></thead>
+        <tbody>
+          {% for ligne in lignes_langues %}
+          <tr>
+            <th scope="row">{{ ligne.nom }}</th>
+            {% for c in ligne.cases %}<td class="{% if c.meilleur %}case--meilleur{% endif %}" style="--v:{{ c.valeur }}"><span>{{ c.valeur|floatformat:2 }}</span></td>{% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="grille-deux" data-reveler>
+      <article class="encart">
+        <h3>Pourquoi le somali est-il plus dur pour les embeddings ?</h3>
+        <p>Les tokenizers découpent le somali en plus de morceaux : <strong>{% for m in fragmentation %}{{ m.nom }} {{ m.so|floatformat:2 }} sous-mots par mot{% if not forloop.last %}, {% endif %}{% endfor %}</strong>, contre {% for m in fragmentation %}{{ m.fr|floatformat:2 }}{% if not forloop.last %} et {% endif %}{% endfor %} en français. C'est un indice d'une couverture plus faible, pas une preuve : LaBSE fragmente moins que e5-small et fait pire.</p>
+      </article>
+      <article class="encart">
+        <h3>Quand la réponse est dans une autre langue</h3>
+        <p>Pour 9 questions dont la réponse n'existe que dans une autre langue, LaBSE a le meilleur MRR, loin devant TF-IDF qui ne partage aucune lettre utile :</p>
+        <ul class="barres barres--fines" data-barres-simples>
+          {% for e in entre_langues %}<li class="barre-ligne" style="--v:{{ e.mrr }};--i:{{ forloop.counter0 }}"><div class="barre-ligne__nom"><strong>{{ e.nom }}</strong></div><div class="barre-ligne__piste"><span class="barre-ligne__barre"></span></div><output class="barre-ligne__valeur">{{ e.mrr|floatformat:2 }}</output></li>{% endfor %}
+        </ul>
+        <p class="note">MRR sur 9 requêtes : un échantillon très petit.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--teinte" aria-labelledby="titre-erreurs">
+  <div class="conteneur">
+    <header class="section__entete" data-reveler>
+      <p class="surtitre">Analyse d'erreurs</p>
+      <h2 id="titre-erreurs">Pourquoi ça échoue&nbsp;: 89 cas lus un par un</h2>
+      <p class="section__chapeau">Un cas difficile est une question dont le premier résultat n'est pas un bon passage. Chaque cas a été lu et classé par cause.</p>
+    </header>
+    <div class="causes" data-reveler>
+      <div class="causes__barres">
+        {% for col in colonnes_causes %}
+        <div class="cause-ligne">
+          <p class="cause-ligne__nom"><strong>{{ col.nom }}</strong><span>{{ col.total }} cas</span></p>
+          <div class="pile" role="img" aria-label="{{ col.nom }} : {% for s in col.segments %}{{ s.nom }} {{ s.valeur }}{% if not forloop.last %}, {% endif %}{% endfor %}">
+            {% for s in col.segments %}<span class="pile__segment pile__segment--{{ s.classe }}" style="--w:{{ s.pct }}" title="{{ s.nom }} : {{ s.valeur }}"><span>{{ s.valeur }}</span></span>{% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <ul class="causes__legende">
+        {% for ligne in causes.lignes %}
+        <li><i class="pile__puce pile__puce--{{ forloop.counter0 }}"></i><div><strong>{{ ligne.nom }}</strong><span>{{ ligne.detail }}</span></div></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <p class="note note--centre" data-reveler>La cause « prétraitement insuffisant » est écartée : 16 variantes sur 18 échouent sur les mêmes 5 requêtes de réglage (voir ci-dessous).</p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="titre-pretraitement">
+  <div class="conteneur">
+    <header class="section__entete" data-reveler>
+      <p class="surtitre">Prétraitement</p>
+      <h2 id="titre-pretraitement">Dix-huit variantes, aucune ne passe le seuil</h2>
+      <p class="section__chapeau">Une variable change à la fois. Règle fixée avant les mesures : on ne remplace la référence (MRR {{ pretraitement.reference|floatformat:3 }} sur {{ pretraitement.requetes_dev }} requêtes de réglage) que si le MRR gagne au moins {{ pretraitement.seuil|floatformat:2 }}. La meilleure variante, {{ meilleure_variante.0 }}, gagne {{ meilleure_variante.1|floatformat:3 }}.</p>
+    </header>
+    <div class="divergent" data-reveler style="--zero:{{ zero }};--seuil:{{ seuil }}">
+      <div class="divergent__axe" aria-hidden="true"><span class="divergent__zero">0</span><span class="divergent__seuil">seuil +{{ pretraitement.seuil|floatformat:2 }}</span></div>
+      <ul class="divergent__liste">
+        {% for b in barres %}
+        <li class="divergent__ligne {% if b.ecart < 0 %}divergent__ligne--negatif{% endif %}" style="--g:{{ b.gauche }};--l:{{ b.largeur }};--i:{{ forloop.counter0 }}">
+          <span class="divergent__nom">{{ b.nom }}</span>
+          <span class="divergent__piste"><span class="divergent__barre"></span></span>
+          <span class="divergent__valeur">{% if b.ecart > 0 %}+{% endif %}{{ b.ecart|floatformat:3 }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <p class="note note--centre" data-reveler>Écart de MRR par rapport à la référence. Les variantes qui retirent des informations (mots vides, racines, lemmes, Jaccard) font plus de mal que de bien : les n-grammes de lettres absorbent déjà les variantes de forme.</p>
+  </div>
+</section>
+
+<section class="section section--teinte" aria-labelledby="titre-limites">
+  <div class="conteneur conteneur--etroit">
+    <header class="section__entete" data-reveler>
+      <p class="surtitre">À lire avec prudence</p>
+      <h2 id="titre-limites">Les limites de ces résultats</h2>
+    </header>
+    <ul class="liste-cases liste-cases--large" data-reveler>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-alerte"/></svg><span><b>Corpus synthétique et petit</b> (232 passages) : les scores ne disent pas ce que donnerait un vrai règlement.</span></li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-alerte"/></svg><span><b>Somali non relu</b> par un locuteur, et écrit avec une IA : c'est la limite la plus importante pour la langue qui nous intéresse.</span></li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-alerte"/></svg><span><b>63 requêtes</b>, écrites par nous, avec une seule bonne réponse chacune. Le test n'est pas parfaitement indépendant du réglage : 9 faits sont visés en dev et en test.</span></li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span><b>Étude du prétraitement</b> sur 20 requêtes seulement : un petit effet n'y serait pas visible.</span></li>
+    </ul>
+  </div>
+</section>
+{% endlocalize %}{% endblock %}

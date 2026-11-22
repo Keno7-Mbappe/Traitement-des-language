@@ -1,0 +1,55 @@
+# DOCUMENT SYNTHÉTIQUE rédigé pour le projet TALN (M2 IAMD), inspiré des règlements universitaires usuels (système LMD). Dates, montants et règles sont fictifs. Les lignes qui commencent par # sont ignorées par le programme.
+
+SYLLABUS – MASTER INTELLIGENCE ARTIFICIELLE ET MODÉLISATION DES DONNÉES (IAMD)
+Le Master IAMD forme en deux ans des spécialistes capables de concevoir, d'évaluer et de déployer des systèmes d'intelligence artificielle. Ce syllabus présente les objectifs, l'organisation, le contenu des modules et les modalités d'évaluation de la formation. Il s'adresse aux candidats, aux étudiants inscrits et aux partenaires professionnels de la formation.
+
+1. Objectifs de la formation
+À l'issue du Master, l'étudiant sait collecter et préparer des données, construire des modèles d'apprentissage automatique, évaluer leurs résultats avec des métriques adaptées et présenter ses travaux de façon reproductible. Les travaux pratiques utilisent le langage Python et des bibliothèques libres. La formation insiste sur la rigueur expérimentale : baseline, protocole sans fuite de données, analyse des erreurs.
+
+2. Compétences visées
+Les compétences visées sont : programmer des pipelines de traitement de données, choisir et comparer des modèles, interpréter des métriques, rédiger un rapport scientifique, travailler en équipe et présenter ses résultats à un public non spécialiste. Une attention particulière est portée aux langues peu dotées et au contexte régional de la Corne de l'Afrique.
+
+3. Conditions d'admission
+Le Master est ouvert aux titulaires d'une licence en informatique, en mathématiques ou dans un domaine voisin. Des bases en programmation Python, en probabilités et en algèbre linéaire sont attendues. L'admission est prononcée sur dossier, après examen par la commission pédagogique. Trente places sont ouvertes chaque année.
+
+4. Organisation générale
+La formation dure quatre semestres et représente 120 crédits. Les semestres 1 et 2 forment le Master 1, les semestres 3 et 4 le Master 2. Chaque semestre comprend quinze semaines de cours. Les enseignements ont lieu du dimanche au jeudi, en journée. La langue d'enseignement est le français ; certains supports sont en anglais.
+
+5. Master 1 – semestre 1
+Le semestre 1 comprend les modules Apprentissage automatique, Statistiques pour la science des données, Bases de données avancées, Programmation Python et Anglais scientifique. Chaque module représente en général 5 ou 6 crédits. Le module de programmation Python sert de mise à niveau pour les étudiants venus d'autres licences.
+
+6. Master 1 – semestre 2
+Le semestre 2 comprend les modules Big Data, Visualisation de données, Introduction à l'apprentissage profond, Fouille de données et un projet tutoré en équipe. Le projet tutoré est encadré par un enseignant et donne lieu à un rapport et à une présentation orale en fin de semestre.
+
+7. Master 2 – semestre 3
+Le semestre 3 comprend les modules Traitement automatique du langage naturel, Recherche d'information, Apprentissage profond, Éthique et IA responsable et Méthodologie de la recherche. Le semestre 4 est consacré au stage et au mémoire. Les modules du semestre 3 comprennent chacun des travaux pratiques en salle informatique.
+
+8. Module Traitement automatique du langage naturel
+Le module de traitement automatique du langage naturel (6 crédits) présente le prétraitement des textes, la représentation vectorielle TF-IDF, les plongements de mots, la classification et les modèles Transformers. Il se conclut par un projet en binôme avec démonstration. Évaluation : contrôle continu 40 %, examen 60 %. Une attention particulière est portée aux langues peu dotées comme le somali.
+
+9. Module Recherche d'information
+Le module de recherche d'information (5 crédits) explique comment retrouver des documents pertinents à partir d'une requête : indexation, pondération TF-IDF, similarité cosinus, mesures de précision et de rappel, recherche sémantique par plongements. Il comprend un TP de construction d'un petit moteur de recherche sur un corpus de documents universitaires.
+
+10. Module Apprentissage profond
+Le module d'apprentissage profond (6 crédits) couvre les réseaux de neurones, les réseaux convolutifs et récurrents, le mécanisme d'attention et les Transformers. Les travaux pratiques utilisent PyTorch. Les étudiants apprennent à entraîner un modèle sur un petit jeu de données et à suivre ses courbes d'apprentissage.
+
+11. Module Éthique et IA responsable
+Le module d'éthique et d'IA responsable (3 crédits) traite des biais des données et des modèles, de la protection des données personnelles, de la transparence des algorithmes et de l'impact social de l'intelligence artificielle. Il se termine par une étude de cas rédigée en groupe.
+
+12. Module Méthodologie de la recherche
+Le module de méthodologie de la recherche (3 crédits) apprend à formuler une question, à chercher et lire des articles scientifiques, à citer ses sources et à rédiger un rapport. Il prépare directement au mémoire de fin d'études. Les étudiants rédigent une courte revue de littérature.
+
+13. Stage et mémoire
+Le semestre 4 comporte un stage de quatre à six mois en entreprise ou en laboratoire, suivi d'un mémoire soutenu devant un jury. Il représente 30 crédits. Le stage est précédé d'une convention signée par l'université, l'organisme d'accueil et l'étudiant. Le guide des stages et du mémoire détaille les étapes.
+
+14. Évaluation des modules
+Chaque module est évalué par un contrôle continu et un examen terminal. Les modules à fort contenu pratique peuvent remplacer l'examen par un projet noté. La présence aux séances de travaux pratiques est obligatoire. Les règles de validation, de compensation et de rattrapage sont celles du règlement des études et des examens.
+
+15. Responsable de la formation
+Le Master est dirigé par un responsable de parcours, enseignant-chercheur de la Faculté, qui préside la commission pédagogique et reçoit les étudiants sur rendez-vous. Il est assisté d'une secrétaire pédagogique. Un délégué de promotion est élu chaque année par les étudiants pour les représenter au conseil de département.
+
+16. Débouchés professionnels
+Les diplômés peuvent devenir data scientists, ingénieurs en intelligence artificielle, analystes de données, ingénieurs en traitement du langage ou chefs de projet numérique, dans les entreprises, les administrations, les banques, les télécommunications et les organisations internationales présentes dans la région.
+
+17. Poursuite d'études
+Les meilleurs étudiants peuvent poursuivre en doctorat, au sein du laboratoire de la Faculté ou dans une université partenaire. Une réunion d'information sur les possibilités de thèse et de financement est organisée chaque année au deuxième semestre du Master 2.

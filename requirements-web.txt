@@ -1,0 +1,12 @@
+# Dépendances de l'application web seule (mise en ligne sur Render) : sans les bibliothèques du notebook.
+# Pour le notebook et le développement, utiliser requirements.txt.
+Django>=5.2,<7
+numpy>=2.0
+pandas>=2.2
+scikit-learn>=1.5
+scipy>=1.13
+joblib>=1.4
+huggingface_hub>=0.30       # mode « Hugging Face » (facultatif : seulement si HF_TOKEN est défini)
+requests>=2.31
+gunicorn>=22
+whitenoise>=6.7

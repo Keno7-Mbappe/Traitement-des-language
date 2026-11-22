@@ -1,0 +1,17 @@
+# Seuls les fichiers listés ci-dessous sont publiés : le reste du dossier (cours, énoncé, archives,
+# versions de travail du rapport et des diapositives) reste sur l'ordinateur.
+/*
+!/.gitignore
+!/README.md
+!/requirements.txt
+!/requirements-web.txt
+!/application_django/
+!/data/
+!/Projet8_Recherche_Semantique.ipynb
+!/Serveur_Embeddings_Colab.ipynb
+
+__pycache__/
+*.pyc
+.venv/
+application_django/staticfiles/
+application_django/artefacts/cache_vecteurs_requetes.json

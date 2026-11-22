@@ -1,0 +1,49 @@
+# DOCUMENT SYNTHÉTIQUE rédigé pour le projet TALN (M2 IAMD), inspiré des règlements universitaires usuels (système LMD). Dates, montants et règles sont fictifs. Les lignes qui commencent par # sont ignorées par le programme.
+
+CHARTE D'UTILISATION DE LA PLATEFORME PÉDAGOGIQUE ET DES RESSOURCES INFORMATIQUES
+La présente charte définit les règles d'usage des moyens informatiques de l'université : plateforme pédagogique, messagerie, réseau Wi-Fi, salles informatiques et logiciels. Son acceptation est obligatoire pour obtenir un compte. Elle protège à la fois les utilisateurs, les données de l'université et le bon fonctionnement du réseau.
+
+1. Acceptation de la charte
+En activant son compte, l'étudiant déclare avoir lu la charte et s'engage à la respecter. Elle s'applique à tous les équipements de l'université et à toute connexion au réseau du campus, y compris depuis un ordinateur personnel. Le non-respect de la charte peut entraîner la suspension du compte et des sanctions disciplinaires.
+
+2. Compte et identifiant
+Un compte personnel est créé pour chaque étudiant lors de son inscription. L'identifiant est communiqué avec la carte d'étudiant. Le compte est strictement personnel : il est interdit de prêter son identifiant ou son mot de passe à un tiers. L'étudiant est responsable de toute action effectuée avec son compte.
+
+3. Mot de passe oublié
+En cas d'oubli du mot de passe, l'étudiant utilise le lien de réinitialisation envoyé à l'adresse électronique qu'il a déclarée à l'inscription. Le lien est valable vingt-quatre heures. Si l'adresse déclarée n'est plus valide, l'étudiant se présente au service informatique avec sa carte d'étudiant pour obtenir un nouveau mot de passe provisoire.
+
+4. Choix et protection du mot de passe
+Le mot de passe doit comporter au moins huit caractères, dont une majuscule et un chiffre. Il ne doit pas contenir le nom de l'étudiant ni sa date de naissance. Il est conseillé de le changer tous les six mois, de ne pas le noter sur un support visible et de ne jamais le communiquer par message, même à une personne se présentant comme membre de l'administration.
+
+5. Compte verrouillé
+Après cinq tentatives de connexion échouées, le compte est verrouillé par mesure de sécurité. Le service informatique (bureau 12, bâtiment B) le débloque après vérification de l'identité de l'étudiant sur présentation de sa carte. Le déblocage est immédiat pendant les heures d'ouverture du service.
+
+6. Dépôt des travaux
+Les enseignants déposent les supports de cours et les sujets de devoirs sur la plateforme. Les étudiants rendent leurs travaux en ligne avant la date de clôture. Aucun dépôt n'est accepté après la clôture, sauf justification validée par l'enseignant. L'étudiant doit vérifier que son fichier s'ouvre correctement après le dépôt et conserver l'accusé de réception.
+
+7. Formats et taille des fichiers
+Les travaux sont déposés au format PDF, sauf consigne contraire de l'enseignant. La taille d'un fichier ne doit pas dépasser 20 Mo. Le nom du fichier suit le modèle NOM_Prenom_Module. Les archives compressées sont acceptées pour le code source, à condition de ne contenir ni fichiers exécutables ni données personnelles.
+
+8. Messagerie institutionnelle
+Chaque étudiant dispose d'une adresse institutionnelle pour correspondre avec les enseignants et l'administration. Les informations officielles (changements d'emploi du temps, convocations, résultats) sont envoyées à cette adresse. L'étudiant doit la consulter au moins deux fois par semaine et utiliser un langage poli dans ses messages.
+
+9. Réseau Wi-Fi du campus
+Le réseau Wi-Fi du campus est accessible avec l'identifiant et le mot de passe de la plateforme, dans les bâtiments d'enseignement, la bibliothèque et la cour centrale. Chaque étudiant peut connecter deux appareils en même temps. Le débit est limité pendant la journée pour garantir un accès équitable ; le téléchargement de fichiers volumineux est déconseillé.
+
+10. Salles informatiques
+Les salles informatiques sont ouvertes de 8 h à 18 h du dimanche au jeudi, sauf pendant les séances de travaux pratiques. L'accès se fait avec la carte d'étudiant. Il est interdit d'y manger ou de boire. Les étudiants doivent fermer leur session avant de partir et signaler toute panne au technicien de permanence.
+
+11. Logiciels et licences
+L'université met à disposition des étudiants des logiciels libres (Python, Jupyter, R, LibreOffice) installés sur les postes des salles informatiques, ainsi que des licences éducatives pour certains logiciels commerciaux. Les licences sont personnelles et valables pendant la durée des études. Il est interdit de copier ou de redistribuer un logiciel sous licence.
+
+12. Données personnelles
+L'université traite les données personnelles des étudiants (identité, résultats, connexions) uniquement pour la gestion des études. Elles ne sont communiquées à aucun tiers sans autorisation. Chaque étudiant peut demander à consulter ou corriger ses données auprès de la scolarité. Les journaux de connexion sont conservés pendant douze mois.
+
+13. Usages interdits
+Sont interdits : le piratage, le téléchargement de contenus illégaux, l'envoi de messages injurieux ou de publicités, l'accès à des sites contraires à la loi et l'utilisation des ressources de l'université à des fins commerciales. Il est également interdit de perturber le réseau, par exemple en y branchant un routeur personnel.
+
+14. Sanctions
+Tout manquement à la charte peut entraîner la suspension du compte, une convocation devant le conseil de discipline et, en cas de faute grave, l'exclusion de l'université. Les faits délictueux sont signalés aux autorités compétentes. L'étudiant concerné est entendu avant toute sanction.
+
+15. Assistance technique
+Pour tout problème technique, les étudiants peuvent se rendre au bureau du service informatique, ouvert de 8 h à 15 h du dimanche au jeudi, en indiquant leur identifiant et une description du problème. Les demandes urgentes liées aux examens sont traitées en priorité.

@@ -1,0 +1,16 @@
+{% extends "recherche/base.html" %}
+{% block titre %}Erreur du serveur{% endblock %}
+{% block classe %}page-erreur{% endblock %}
+
+{% block contenu %}
+<section class="erreur-page" aria-labelledby="titre-page">
+  <div class="conteneur erreur-page__interieur">
+    <p class="erreur-page__code" aria-hidden="true">500</p>
+    <h1 id="titre-page">Le moteur a eu un souci</h1>
+    <p class="erreur-page__texte">Une erreur inattendue est survenue de notre côté. Réessayez dans un instant : la méthode TF-IDF fonctionne sans connexion et sans réglage.</p>
+    <p class="erreur-page__actions">
+      <a class="btn btn--primaire" href="{% url 'accueil' %}"><span class="btn__texte">Retour à la recherche</span><svg class="ico btn__fleche" aria-hidden="true"><use href="#i-fleche"/></svg></a>
+    </p>
+  </div>
+</section>
+{% endblock %}

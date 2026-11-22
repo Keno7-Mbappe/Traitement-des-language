@@ -1,0 +1,242 @@
+{% extends "recherche/base.html" %}
+{% load static l10n %}
+{% block titre %}Méthode : du texte au sens{% endblock %}
+{% block description %}La chaîne de traitement du projet : données, nettoyage, découpage, représentation (TF-IDF, e5-small, LaBSE), comparaison, métriques d'évaluation et protocole.{% endblock %}
+{% block classe %}page-methode{% endblock %}
+{% block scripts %}<script src="{% static 'recherche/js/pages.js' %}" defer></script>{% endblock %}
+
+{% block contenu %}{% localize off %}
+<section class="entete-page" aria-labelledby="titre-page">
+  <div class="entete-page__fond" aria-hidden="true"></div>
+  <div class="conteneur">
+    <p class="surtitre monter" style="--d:0"><span class="surtitre__point"></span>Méthode</p>
+    <h1 id="titre-page" class="monter" style="--d:1">Du texte au <em class="souligne">sens<svg class="souligne__trait" viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9c40-8 86-9 130-4 30 3 58 3 84-1"/></svg></em>&nbsp;: la chaîne de traitement</h1>
+    <p class="entete-page__chapeau monter" style="--d:2">Six étapes, de la collecte des documents à la mesure des résultats. Cliquez sur une étape pour la voir de près, essayez le découpage en mots, puis manipulez les métriques.</p>
+  </div>
+</section>
+
+<section class="section section--serree" aria-labelledby="titre-etapes">
+  <div class="conteneur">
+    <h2 id="titre-etapes" class="visuellement-cache">Les six étapes</h2>
+    <div class="etapes" data-onglets>
+      <div class="etapes__rail" role="tablist" aria-label="Étapes de la chaîne de traitement">
+        <button type="button" role="tab" id="onglet-1" aria-controls="panneau-1" aria-selected="true" data-onglet><span class="etapes__num">1</span><span class="etapes__nom">Données</span></button>
+        <button type="button" role="tab" id="onglet-2" aria-controls="panneau-2" aria-selected="false" tabindex="-1" data-onglet><span class="etapes__num">2</span><span class="etapes__nom">Nettoyage</span></button>
+        <button type="button" role="tab" id="onglet-3" aria-controls="panneau-3" aria-selected="false" tabindex="-1" data-onglet><span class="etapes__num">3</span><span class="etapes__nom">Découpage</span></button>
+        <button type="button" role="tab" id="onglet-4" aria-controls="panneau-4" aria-selected="false" tabindex="-1" data-onglet><span class="etapes__num">4</span><span class="etapes__nom">Représentation</span></button>
+        <button type="button" role="tab" id="onglet-5" aria-controls="panneau-5" aria-selected="false" tabindex="-1" data-onglet><span class="etapes__num">5</span><span class="etapes__nom">Comparaison</span></button>
+        <button type="button" role="tab" id="onglet-6" aria-controls="panneau-6" aria-selected="false" tabindex="-1" data-onglet><span class="etapes__num">6</span><span class="etapes__nom">Évaluation</span></button>
+      </div>
+
+      <div class="etapes__panneaux">
+        <section class="panneau" role="tabpanel" id="panneau-1" aria-labelledby="onglet-1" data-panneau>
+          <div class="panneau__texte">
+            <h3>Des documents fictifs, mais réalistes</h3>
+            <p>Le corpus est <strong>synthétique</strong> : règlement des études, guide d'inscription, frais et bourses, syllabus du Master IAMD, calendrier, charte informatique, guide des stages, bibliothèque, guides en somali. Dates, montants et règles sont inventés.</p>
+            <p>Un <strong>passage</strong> est une section d'un document (32 à 77 mots) avec son titre. Un <strong>fait</strong> est une information précise (par exemple <code>certificat_medical</code>) : c'est ce qui permet de savoir quels passages répondent à une question.</p>
+            <p><a class="lien-fleche" href="{% url 'corpus' %}">Parcourir le corpus<svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></a></p>
+          </div>
+          <div class="panneau__visuel">
+            <ul class="tuiles">
+              <li><span class="tuiles__nombre">{{ stats.documents|length }}</span><span>documents</span></li>
+              <li><span class="tuiles__nombre">{{ stats.passages }}</span><span>passages</span></li>
+              <li><span class="tuiles__nombre">83</span><span>requêtes</span></li>
+              <li><span class="tuiles__nombre">131</span><span>faits annotés</span></li>
+            </ul>
+            <p class="note">20 requêtes « dev » servent à régler, 63 requêtes « test » donnent le résultat final.</p>
+          </div>
+        </section>
+
+        <section class="panneau" role="tabpanel" id="panneau-2" aria-labelledby="onglet-2" data-panneau hidden>
+          <div class="panneau__texte">
+            <h3>Un nettoyage léger et vérifié</h3>
+            <p>Texte en Unicode NFC, espaces et sauts de ligne normalisés. Les URL et les adresses e-mail ne sont <strong>pas</strong> remplacées : pour une recherche, l'adresse d'un service peut être justement la réponse attendue.</p>
+            <p>Sur les {{ stats.passages }} passages, seuls les sauts de ligne changent : le corpus synthétique est déjà propre. Douze tests unitaires protègent la fonction de nettoyage.</p>
+          </div>
+          <div class="panneau__visuel">
+            <div class="avant-apres">
+              <div><span class="avant-apres__etiquette">avant</span><code>Écrire à  scolarite@univ.dj&nbsp;ou voir<br>https://univ.example/frais&nbsp;:&#9;tarifs</code></div>
+              <svg class="ico avant-apres__fleche" aria-hidden="true"><use href="#i-fleche"/></svg>
+              <div><span class="avant-apres__etiquette">après</span><code>Écrire à scolarite@univ.dj ou voir https://univ.example/frais : tarifs</code></div>
+            </div>
+            <p class="note">Exemple du test unitaire : espace insécable, tabulation et espaces doubles deviennent des espaces simples.</p>
+          </div>
+        </section>
+
+        <section class="panneau" role="tabpanel" id="panneau-3" aria-labelledby="onglet-3" data-panneau hidden>
+          <div class="panneau__texte">
+            <h3>Découper en mots : l'apostrophe change de rôle</h3>
+            <p>Un mot n'est pas toujours séparé par des espaces. L'apostrophe est une <strong>élision</strong> en français (« l'année »), un <strong>possessif</strong> en anglais (« student's ») et une <strong>lettre du mot</strong> en somali (« la'aantiis »). Le projet utilise une expression régulière adaptée, qui garde ces mots entiers. spaCy ne propose pas de langue somali.</p>
+            <label class="champ-demo" for="demo-texte">Essayez avec votre phrase</label>
+            <input class="champ-demo__entree" id="demo-texte" type="text" value="L'année dure 9 mois : student's card, la'aantiis." data-demo-texte maxlength="200" autocomplete="off" spellcheck="false">
+            <ul class="jetons__liste jetons__liste--grand" data-demo-jetons aria-live="polite" aria-label="Jetons obtenus"></ul>
+          </div>
+          <div class="panneau__visuel">
+            <div class="tableau-defile">
+              <table class="tableau tableau--compact">
+                <caption class="visuellement-cache">Découpage de trois mots avec la regex de base et la regex adaptée</caption>
+                <thead><tr><th scope="col">Langue</th><th scope="col">Regex de base (’ seulement)</th><th scope="col">Regex adaptée (' et ’)</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">fr</th><td><span class="jeton">l</span><span class="jeton">'</span><span class="jeton">année</span></td><td><span class="jeton jeton--commun">l'année</span></td></tr>
+                  <tr><th scope="row">en</th><td><span class="jeton">student</span><span class="jeton">'</span><span class="jeton">s</span></td><td><span class="jeton jeton--commun">student's</span></td></tr>
+                  <tr><th scope="row">so</th><td><span class="jeton">la</span><span class="jeton">'</span><span class="jeton">aantiis</span></td><td><span class="jeton jeton--commun">la'aantiis</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="note">La langue d'une question se détecte à 97,6 % avec un classifieur de lettres (83 requêtes) ; l'application ne s'en sert pas.</p>
+          </div>
+        </section>
+
+        <section class="panneau" role="tabpanel" id="panneau-4" aria-labelledby="onglet-4" data-panneau hidden>
+          <div class="panneau__texte">
+            <h3>Trois façons de représenter un texte</h3>
+            <p><strong>TF-IDF</strong> compte des groupes de 3 à 5 lettres, pondérés par leur rareté : il compare des lettres. Les modèles <strong>e5-small</strong> et <strong>LaBSE</strong>, déjà entraînés et utilisés tels quels, produisent un vecteur de nombres qui capte le sens.</p>
+            <ul class="liste-fiche">
+              <li><span>TF-IDF</span><b>22 361 dimensions · lettres 3 à 5 · sans accents</b></li>
+              <li><span>e5-small</span><b>118 M paramètres · 384 dimensions · préfixes « query: » / « passage: »</b></li>
+              <li><span>LaBSE</span><b>472 M paramètres · 768 dimensions · 109 langues</b></li>
+            </ul>
+          </div>
+          <div class="panneau__visuel">
+            <p class="visuel-titre">Sous-mots par mot (plus c'est haut, plus la langue est fragmentée)</p>
+            <div class="mini-barres" role="table" aria-label="Fragmentation des mots par les tokenizers">
+              {% for m in fragmentation %}
+              <div class="mini-barres__groupe" role="row"><span class="mini-barres__nom" role="rowheader">{{ m.nom }}</span>
+                {% for code, valeur in m.items %}{% if code != "nom" %}
+                <span class="mini-barre" role="cell" style="--v:{{ valeur }}"><span class="mini-barre__barre"></span><span class="mini-barre__valeur">{{ code|upper }} {{ valeur|floatformat:2 }}</span></span>
+                {% endif %}{% endfor %}
+              </div>
+              {% endfor %}
+            </div>
+            <p class="note">Le somali est le plus fragmenté : indice d'une couverture plus faible, pas une preuve (LaBSE fragmente moins et fait pire).</p>
+          </div>
+        </section>
+
+        <section class="panneau" role="tabpanel" id="panneau-5" aria-labelledby="onglet-5" data-panneau hidden>
+          <div class="panneau__texte">
+            <h3>Comparer par la similarité cosinus, puis mélanger</h3>
+            <p>Les vecteurs sont normalisés : le produit scalaire de la question et d'un passage <em>est</em> leur cosinus. On classe les 232 passages et on garde les trois meilleurs. Les scores nuls sont écartés : mieux vaut aucun résultat qu'un classement au hasard.</p>
+            <p class="formule" role="math" aria-label="score égal alpha fois TF-IDF normalisé plus un moins alpha fois embeddings normalisé">score = <var>α</var> · minmax(TF-IDF) + (1 − <var>α</var>) · minmax(embeddings)</p>
+            <p>Le poids <var>α</var> est choisi sur les 20 requêtes de réglage : <strong>0,5</strong> avec e5-small, <strong>0,25</strong> avec LaBSE. La courbe est plate : le choix est fragile.</p>
+          </div>
+          <div class="panneau__visuel">
+            <p class="visuel-titre">MRR sur les requêtes de réglage selon <var>α</var> <span class="visuel-titre__aide">(axe tronqué : 0,50 à 0,80)</span></p>
+            <div class="courbes">
+              {% for c in courbes_alpha %}
+              <div class="courbe">
+                <p class="courbe__nom">{{ c.nom }}</p>
+                <div class="courbe__colonnes">
+                  {% for p in c.points %}
+                  <div class="courbe__colonne {% if p.choisi %}courbe__colonne--choisie{% endif %}" style="--h:{{ p.hauteur }}">
+                    <span class="courbe__valeur">{{ p.mrr|floatformat:3 }}</span>
+                    <span class="courbe__barre"></span>
+                    <span class="courbe__alpha">{{ p.alpha|floatformat:2 }}</span>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <p class="note"><var>α</var> = 0 : embeddings seuls · <var>α</var> = 1 : TF-IDF seul (0,770). La colonne dorée est le poids retenu.</p>
+          </div>
+        </section>
+
+        <section class="panneau" role="tabpanel" id="panneau-6" aria-labelledby="onglet-6" data-panneau hidden>
+          <div class="panneau__texte">
+            <h3>Mesurer sans se tromper soi-même</h3>
+            <p>Les paramètres se règlent sur les <strong>20 requêtes dev</strong> seulement. Le résultat se lit sur les <strong>{{ requetes_test.toutes }} requêtes test</strong>, qui n'ont jamais servi à choisir. TF-IDF est appris sur les passages, jamais sur les requêtes.</p>
+            <p>Deux scénarios : <strong>toutes_langues</strong> (un bon passage compte quelle que soit sa langue : cela mesure la recherche entre langues) et <strong>meme_langue</strong> ({{ requetes_test.meme }} requêtes : seul compte un bon passage dans la langue de la question).</p>
+            <p><a class="lien-fleche" href="#metriques">Manipuler les métriques<svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></a></p>
+          </div>
+          <div class="panneau__visuel">
+            <ul class="liste-cases">
+              <li><svg class="ico" aria-hidden="true"><use href="#i-valider"/></svg><span><b>Plancher du hasard</b> : Hit@3 de 0,03. Un score de 0,5 n'a rien d'un coup de chance.</span></li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-valider"/></svg><span><b>Étude du prétraitement</b> : 18 variantes testées, règle fixée avant (+0,05 de MRR). Aucune ne la passe.</span></li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-valider"/></svg><span><b>Contrôle de fuite</b> : 9 faits sont visés à la fois en dev et en test, mais aucune requête n'est identique.</span></li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-alerte"/></svg><span><b>Limite</b> : une requête change le Hit@3 de 0,016. On ne conclut pas sur de petits écarts.</span></li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="titre-methodes">
+  <div class="conteneur">
+    <header class="section__entete" data-reveler>
+      <p class="surtitre">Les cinq méthodes</p>
+      <h2 id="titre-methodes">Quatre façons de chercher, une de référence</h2>
+      <p class="section__chapeau">Chaque méthode est disponible dans la page de recherche. La baseline est la référence qu'il faut battre.</p>
+    </header>
+    <div class="cartes-methodes" data-reveler>
+      {% for m in methodes %}
+      <article class="carte-methode {% if m.etiquette == 'meilleur' %}carte-methode--meilleur{% endif %}" style="--i:{{ forloop.counter0 }}">
+        <header><h3>{{ m.court }}</h3>{% if m.etiquette %}<em class="etiquette">{{ m.etiquette }}</em>{% endif %}</header>
+        <p class="carte-methode__libelle">{{ m.libelle }}</p>
+        <ol class="carte-methode__etapes">{% for e in m.etapes %}<li>{{ e }}</li>{% endfor %}</ol>
+        <a class="lien-fleche" href="{% url 'accueil' %}?q=Combien%20co%C3%BBtent%20les%20frais%20de%20scolarit%C3%A9%20en%20Master%20%3F&amp;methode={{ m.cle }}">Essayer<svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--teinte" id="metriques" aria-labelledby="titre-metriques">
+  <div class="conteneur">
+    <header class="section__entete" data-reveler>
+      <p class="surtitre">Les métriques</p>
+      <h2 id="titre-metriques">Lire Precision@3, Hit@3 et MRR</h2>
+      <p class="section__chapeau">Pour chaque question, le moteur classe les passages. On regarde <em>où</em> se trouvent les bons passages (ceux annotés avec le fait visé). Déplacez le curseur pour voir les trois notes changer.</p>
+    </header>
+
+    <div class="metriques" data-metriques data-reveler>
+      <div class="metriques__commandes">
+        <div class="commande">
+          <label for="rang-bon">Rang du premier bon passage : <output class="chiffre" data-sortie-rang>2</output></label>
+          <input id="rang-bon" type="range" min="1" max="11" step="1" value="2" data-rang aria-describedby="aide-rang">
+          <p id="aide-rang" class="note">De 1 à 10, ou « absent » tout à droite.</p>
+        </div>
+        <div class="commande">
+          <span class="commande__titre" id="titre-nombre">Nombre de bons passages</span>
+          <div class="segment" role="radiogroup" aria-labelledby="titre-nombre">
+            <label><input type="radio" name="nombre-bons" value="1" checked><span>1</span></label>
+            <label><input type="radio" name="nombre-bons" value="2"><span>2</span></label>
+            <label><input type="radio" name="nombre-bons" value="3"><span>3</span></label>
+          </div>
+        </div>
+        <ol class="metriques__rangs" data-liste aria-label="Classement de dix passages"><li class="rang-ligne">Activez JavaScript pour manipuler la démonstration.</li></ol>
+      </div>
+      <dl class="metriques__valeurs" aria-live="polite">
+        <div class="valeur">
+          <dt>Precision@3</dt><dd class="valeur__nombre" data-sortie-p>0,33</dd>
+          <p class="valeur__texte" data-texte-p>Part des 3 résultats affichés qui sont bons.</p>
+        </div>
+        <div class="valeur">
+          <dt>Hit@3</dt><dd class="valeur__nombre" data-sortie-hit>1</dd>
+          <p class="valeur__texte" data-texte-hit>1 si au moins un bon passage est dans le top 3.</p>
+        </div>
+        <div class="valeur">
+          <dt>Note du MRR</dt><dd class="valeur__nombre" data-sortie-rr>0,50</dd>
+          <p class="valeur__texte" data-texte-rr>1 ÷ rang du premier bon passage. Le MRR est la moyenne de cette note sur toutes les requêtes.</p>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="titre-api">
+  <div class="conteneur conteneur--api">
+    <header class="section__entete section__entete--gauche" data-reveler>
+      <p class="surtitre">L'API JSON</p>
+      <h2 id="titre-api">La même recherche, pour un programme</h2>
+      <p class="section__chapeau">Le moteur est aussi disponible en JSON, avec la même structure que la fonction du notebook. Voici une vraie réponse, passages raccourcis.</p>
+      <p><a class="btn btn--secondaire" href="{% url 'api_recherche' %}?q=bibliotheque%20horaires">Essayer l'API<svg class="ico" aria-hidden="true"><use href="#i-fleche-haut-droite"/></svg></a></p>
+    </header>
+    <div class="code" data-reveler>
+      <div class="code__barre"><span class="code__point"></span><span class="code__point"></span><span class="code__point"></span><span class="code__titre">GET /api/recherche/?q=bibliotheque%20horaires&amp;methode=tfidf</span></div>
+      <pre tabindex="0"><code>{{ api_exemple }}</code></pre>
+    </div>
+  </div>
+</section>
+{% endlocalize %}{% endblock %}

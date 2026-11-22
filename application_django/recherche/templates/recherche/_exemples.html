@@ -1,0 +1,8 @@
+<div class="exemples__groupe">
+  <span class="exemples__titre"><svg class="ico" aria-hidden="true"><use href="#i-valider"/></svg>Exemples qui marchent</span>
+  {% for exemple in exemples_ok %}<a class="puce" href="{% url 'accueil' %}?q={{ exemple|urlencode }}&methode={{ methode }}">{{ exemple }}</a>{% endfor %}
+</div>
+<div class="exemples__groupe">
+  <span class="exemples__titre exemples__titre--difficile"><svg class="ico" aria-hidden="true"><use href="#i-alerte"/></svg>Cas difficiles</span>
+  {% for exemple in exemples_difficiles %}<a class="puce puce--difficile" href="{% url 'accueil' %}?q={{ exemple|urlencode }}&methode={{ methode }}">{{ exemple }}</a>{% endfor %}
+</div>

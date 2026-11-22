@@ -1,0 +1,23 @@
+<figure class="carte" data-carte-panneau>
+  <figcaption class="carte__entete">
+    <div>
+      <p class="surtitre">Carte des passages</p>
+      <p class="carte__sous"><span class="chiffre">{{ carte.points|length }}</span> passages · projection PCA des vecteurs e5-small</p>
+    </div>
+    <div class="legende" role="group" aria-label="Montrer ou masquer une langue">
+      <button type="button" class="legende__pastille" data-langue="fr" aria-pressed="true"><i class="pt pt--fr"></i>FR</button>
+      <button type="button" class="legende__pastille" data-langue="en" aria-pressed="true"><i class="pt pt--en"></i>EN</button>
+      <button type="button" class="legende__pastille" data-langue="so" aria-pressed="true"><i class="pt pt--so"></i>SO</button>
+    </div>
+  </figcaption>
+  <div class="carte__toile">
+    <canvas data-carte role="img" aria-label="Carte en deux dimensions des {{ carte.points|length }} passages, colorés par langue : français, anglais et somali forment trois groupes{% if carte.resultats %}. Les trois résultats de la recherche sont entourés{% endif %}."></canvas>
+    <div class="carte__bulle" data-bulle role="status" hidden></div>
+  </div>
+  <p class="carte__note">
+    {% if carte.resultats %}Les anneaux numérotés marquent les 3 résultats{% if carte.question %} ; l'étoile est votre question, placée avec le même modèle{% else %} ; cette méthode ne calcule pas de vecteur e5, la question n'est donc pas placée{% endif %}.
+    {% else %}Chaque point est un passage. {% endif %}
+    Les langues forment des îlots : e5-small range son espace par langue. Les 2 axes ne résument que {{ carte.variance }} % de la variance : à lire avec prudence.
+  </p>
+</figure>
+{{ carte|json_script:"carte-donnees" }}

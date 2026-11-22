@@ -1,0 +1,84 @@
+id,requete,langue,type,faits,partition
+Q01,Quelles pièces faut-il fournir pour s'inscrire au Master ?,fr,mots_communs,dossier_inscription,dev
+Q02,Combien coûtent les frais de scolarité en Master ?,fr,mots_communs,montant_frais,test
+Q03,Peut-on payer les frais de scolarité en deux versements ?,fr,mots_communs,paiement_modalites,test
+Q04,Comment réinitialiser mon mot de passe ?,fr,mots_communs,mot_de_passe,dev
+Q05,Quelles sont les dates des examens du premier semestre ?,fr,mots_communs,dates_examens_s1,test
+Q06,Comment est calculée la note finale d'un module ?,fr,mots_communs,note_finale,test
+Q07,Quel est le délai pour déposer un certificat médical ?,fr,mots_communs,certificat_medical,test
+Q08,"Je n'ai plus d'argent pour payer ma scolarité, que faire ?",fr,paraphrase,etalement,test
+Q09,Comment postuler en Master ?,fr,paraphrase,candidature_master,dev
+Q10,Puis-je repasser un examen que j'ai raté ?,fr,paraphrase,rattrapage,test
+Q11,"Mon compte est bloqué, qui peut m'aider ?",fr,paraphrase,compte_bloque,test
+Q12,Comment contester ma note d'examen ?,fr,paraphrase,reclamation_note,test
+Q13,Est-ce que je risque d'être exclu si je sèche trop de cours ?,fr,paraphrase,absences,dev
+Q14,Quelle mention vais-je avoir avec 13 de moyenne ?,fr,paraphrase,mentions,test
+Q15,Y a-t-il un bus pour aller à l'université ?,fr,paraphrase,transport_bus,test
+Q16,Où trouver un logement étudiant ?,fr,paraphrase,logement,test
+Q17,bibliotheque horaires,fr,court,horaires_bibliotheque,test
+Q18,recu paiement,fr,court,recu_paiement,test
+Q19,mdp oublie,fr,court,mot_de_passe,dev
+Q20,duree stage,fr,court,duree_stage,test
+Q21,wifi campus,fr,court,wifi,test
+Q22,What documents are required for registration?,en,mots_communs,dossier_inscription,dev
+Q23,How can I pay my tuition in two instalments?,en,mots_communs,paiement_modalites,test
+Q24,How do I appeal an exam grade?,en,mots_communs,reclamation_note,test
+Q25,What are the library opening hours?,en,mots_communs,horaires_bibliotheque,dev
+Q26,How many books can I borrow and for how long?,en,mots_communs,emprunt,test
+Q27,Can I renew a borrowed book?,en,mots_communs,renouvellement,test
+Q28,"I cannot afford my tuition at the moment, what are my options?",en,paraphrase,etalement,test
+Q29,Are there scholarships for students with low income?,en,paraphrase,bourse,dev
+Q30,How many classes can I skip before getting a warning?,en,paraphrase,absences,test
+Q31,"I was sick and missed class, what should I bring?",en,paraphrase,certificat_medical,test
+Q32,Is there a second chance if I fail a course?,en,paraphrase,rattrapage,test
+Q33,I can't log in anymore after several attempts,en,paraphrase,compte_bloque,test
+Q34,Who helps me find a placement in a company?,en,paraphrase,recherche_stage,dev
+Q35,Do I need a visa to study here?,en,paraphrase,etudiants_etrangers,test
+Q36,What is the penalty for plagiarism in a report?,en,paraphrase,fraude;plagiat_memoire,test
+Q37,How is my final degree classified?,en,paraphrase,mentions,test
+Q38,student card lost,en,court,carte_etudiant,dev
+Q39,exam dates,en,court,dates_examens_s1,test
+Q40,Dukumentiyo maxaa loo baahan yahay diiwaangelinta?,so,mots_communs,dossier_inscription,dev
+Q41,Sideen u bixiyaa lacagta waxbarashada laba qaybood?,so,mots_communs,paiement_modalites,test
+Q42,Sidee u helaa warqadda caddeynta ardaynimada?,so,mots_communs,attestation_scolarite,test
+Q43,Waxaan illoobay erayga sirta ah ee madasha waxbarashada,so,mots_communs,mot_de_passe,dev
+Q44,Maktabaddu goorma ayay furan tahay?,so,mots_communs,horaires_bibliotheque,test
+Q45,Basaska jaamacadda goorma ayay kacaan?,so,mots_communs,transport_bus,test
+Q46,Imisa jeer ayaan casharka ka maqnaan karaa?,so,paraphrase,absences,test
+Q47,"Lacag uma haysto waxbarashada, maxaan sameeyaa?",so,paraphrase,etalement,test
+Q48,"Waan xanuunsaday oo fasalka ka maqnaa, maxaan keenaa?",so,paraphrase,certificat_medical,test
+Q49,"Haddii aan imtixaanka ku fashilmo, fursad kale miyaa jirta?",so,paraphrase,rattrapage,dev
+Q50,Sideen ugu gudbaa fasalka sare?,so,paraphrase,reinscription,test
+Q51,"Akoonkayga waa la xiray, yaa furi kara?",so,paraphrase,compte_bloque,test
+Q52,Yaa i caawin kara inaan helo tababar shaqo?,so,paraphrase,recherche_stage,test
+Q53,Sideen u codsadaa deeq waxbarasho?,so,paraphrase,bourse,test
+Q54,Sideen cabasho uga gudbiyaa dhibcaha imtixaanka?,so,paraphrase,reclamation_note,dev
+Q55,rasiid lacag,so,court,recu_paiement,test
+Q56,visa arday shisheeye,so,court,etudiants_etrangers,test
+Q57,kaarka ardayga,so,court,carte_etudiant,dev
+Q58,Combien de crédits faut-il pour passer en Master 2 ?,fr,mots_communs,passage_annee,test
+Q59,Que faire si j'ai été absent à un examen ?,fr,paraphrase,absence_examen,test
+Q60,Comment obtenir un tiers-temps pour les examens ?,fr,paraphrase,handicap_amenagement,test
+Q61,Comment faire un virement pour payer mes frais ?,fr,paraphrase,virement_bancaire,test
+Q62,Quelle est la durée d'une soutenance de mémoire ?,fr,mots_communs,soutenance,test
+Q63,Quels logiciels sont gratuits pour les étudiants ?,fr,paraphrase,logiciels_licences,dev
+Q64,Puis-je suspendre mes études pendant un an ?,fr,paraphrase,suspension_etudes,test
+Q65,Can I borrow a book from another library?,en,paraphrase,pret_entre_bibliotheques,test
+Q66,What happens if I lose a library book?,en,mots_communs,livre_perdu,test
+Q67,Is there an orientation week for new students?,en,mots_communs,semaine_accueil,dev
+Q68,Where can I see a doctor on campus?,en,paraphrase,sante_campus,test
+Q69,Makhaayadda jaamacadda goorma ayay furan tahay?,so,mots_communs,restauration,test
+Q70,Sideen u beddelaa cinwaankayga?,so,mots_communs,changement_etat_civil,test
+Q71,Haddii aan lacagta ka daahiyo maxaa dhacaya?,so,paraphrase,retard_paiement,test
+Q72,"Haddii aan casharka ka daahi shan iyo toban daqiiqo, macallinku ma ii diidi karaa?",so,mots_communs,retard_cours,test
+Q73,"Waan ka maqnaa imtixaanka, maxaa dhacaya?",so,paraphrase,absence_examen,test
+Q74,Sideen u helaa waqti dheeraad ah imtixaanka haddii aan naafo ahay?,so,paraphrase,handicap_amenagement,test
+Q75,Imisa dhibcood ayaa semesterka lagu gudbaa?,so,mots_communs,validation_semestre,dev
+Q76,Ma joojin karaa waxbarashadayda hal sannad?,so,paraphrase,suspension_etudes,test
+Q77,"Lacagta waxbarashada laba jeer ayaan bixiyay, sideen u soo celiyaa?",so,paraphrase,erreur_paiement,test
+Q78,Sideen lacagta bangiga ugu wareejiyaa?,so,mots_communs,virement_bancaire,dev
+Q79,Waa maxay xeerarka erayga sirta ah?,so,mots_communs,regles_mdp,test
+Q80,Barnaamijyo bilaash ah ma jiraan ardayda?,so,paraphrase,logiciels_licences,test
+Q81,Qolka salaadda xaggee ku yaal?,so,mots_communs,salle_priere,test
+Q82,Goorma ayaan diblomada helayaa?,so,paraphrase,diplome_releve,test
+Q83,Imisa krediit ayaan u baahanahay si aan Master 2 u galo?,so,paraphrase,passage_annee,dev

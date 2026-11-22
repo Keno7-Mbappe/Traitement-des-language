@@ -1,0 +1,83 @@
+{% extends "recherche/base.html" %}
+{% load static l10n %}
+{% block titre %}Le corpus{% endblock %}
+{% block description %}Le corpus synthétique du projet : 14 documents universitaires fictifs, 232 passages en français, anglais et somali.{% endblock %}
+{% block classe %}page-corpus{% endblock %}
+{% block scripts %}<script src="{% static 'recherche/js/pages.js' %}" defer></script>{% endblock %}
+
+{% block contenu %}{% localize off %}
+<section class="entete-page" aria-labelledby="titre-page">
+  <div class="entete-page__fond" aria-hidden="true"></div>
+  <div class="conteneur">
+    <p class="surtitre monter" style="--d:0"><span class="surtitre__point"></span>Corpus</p>
+    <h1 id="titre-page" class="monter" style="--d:1">Quatorze documents, trois <em class="souligne">langues<svg class="souligne__trait" viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9c40-8 86-9 130-4 30 3 58 3 84-1"/></svg></em></h1>
+    <p class="entete-page__chapeau monter" style="--d:2">Un règlement, un guide d'inscription, un syllabus, un calendrier… tous <strong>fictifs</strong>, écrits pour le projet. Chaque document est découpé en passages : c'est ce que le moteur retrouve.</p>
+
+    <ul class="langues-totaux monter" style="--d:3">
+      {% for t in totaux %}
+      <li class="langue-total langue-total--{{ t.code }}">
+        <span class="pastille pastille--{{ t.code }}"><i></i>{{ t.nom }}</span>
+        <span class="langue-total__nombre"><span data-compter="{{ t.passages }}">{{ t.passages }}</span><small> passages</small></span>
+        <span class="langue-total__detail">{{ t.documents }} document{{ t.documents|pluralize }} · {{ t.mots|floatformat:'0g' }} mots</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section section--serree" aria-labelledby="titre-documents">
+  <div class="conteneur">
+    <header class="section__entete section__entete--ligne" data-reveler>
+      <div>
+        <p class="surtitre">Les documents</p>
+        <h2 id="titre-documents">{{ documents|length }} documents, {{ stats.passages }} passages</h2>
+      </div>
+      <div class="segment segment--filtre" role="group" aria-label="Filtrer les documents par langue" data-filtre-langue>
+        <button type="button" aria-pressed="true" data-valeur="tous">Tous</button>
+        <button type="button" aria-pressed="false" data-valeur="fr">Français</button>
+        <button type="button" aria-pressed="false" data-valeur="en">English</button>
+        <button type="button" aria-pressed="false" data-valeur="so">Soomaali</button>
+      </div>
+    </header>
+
+    <div class="docs" data-docs>
+      {% for d in documents %}
+      <article class="doc" data-langue="{{ d.langue }}" style="--i:{{ forloop.counter0 }};--part:{{ d.part }}">
+        <header class="doc__entete">
+          <span class="pastille pastille--{{ d.langue }}"><i></i>{{ d.langue_nom }}</span>
+          <span class="doc__passages"><b>{{ d.passages }}</b> passages</span>
+        </header>
+        <h3 class="doc__titre">{{ d.titre }}</h3>
+        <p class="doc__fichier"><svg class="ico" aria-hidden="true"><use href="#i-fichier"/></svg>{{ d.source }}</p>
+        <div class="doc__jauge" aria-hidden="true"><span></span></div>
+        <p class="doc__mots">{{ d.mots|floatformat:"0g" }} mots</p>
+        <details class="doc__sections">
+          <summary>Voir les sections<svg class="ico" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <ol>
+            {% for s in d.sections %}<li><a href="{% url 'accueil' %}?q={{ s.titre|urlencode }}" title="Chercher ce titre">{{ s.titre }}</a></li>{% endfor %}
+          </ol>
+        </details>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="note note--centre vide-filtre" data-vide hidden>Aucun document pour cette langue.</p>
+  </div>
+</section>
+
+<section class="section section--teinte" aria-labelledby="titre-fiche">
+  <div class="conteneur conteneur--etroit">
+    <header class="section__entete" data-reveler>
+      <p class="surtitre">Fiche du corpus</p>
+      <h2 id="titre-fiche">D'où viennent ces données ?</h2>
+    </header>
+    <dl class="fiche" data-reveler>
+      <div><dt>Origine</dt><dd>Corpus synthétique : documents universitaires fictifs, inventés pour ce projet.</dd></div>
+      <div><dt>Rédaction</dt><dd>Écrits avec l'aide d'un assistant d'IA, à relire par le binôme. <strong>Le somali doit être relu par un locuteur.</strong></dd></div>
+      <div><dt>Domaine</dt><dd>Vie universitaire : règlements, inscription, frais, bibliothèque, informatique, stages, calendrier.</dd></div>
+      <div><dt>Unités</dt><dd>{{ documents|length }} documents, {{ stats.passages }} passages (une section = un passage), {{ stats.mots|floatformat:'0g' }} mots.</dd></div>
+      <div><dt>Annotation</dt><dd>Un ou plusieurs « faits » par passage, notés pendant la rédaction ; ils servent à décider quels passages sont de bonnes réponses.</dd></div>
+      <div><dt>Données personnelles</dt><dd>Aucune : le contenu est inventé et sans droits de tiers (usage pédagogique).</dd></div>
+    </dl>
+  </div>
+</section>
+{% endlocalize %}{% endblock %}

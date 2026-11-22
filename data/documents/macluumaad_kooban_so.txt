@@ -1,0 +1,46 @@
+# DOCUMENT SYNTHÉTIQUE rédigé pour le projet TALN (M2 IAMD), inspiré des règlements universitaires usuels (système LMD). Dates, montants et règles sont fictifs. Les lignes qui commencent par # sont ignorées par le programme.
+
+MACLUUMAAD KOOBAN OO ARDAYDA U AH – JAAMACADDA
+Halkan waxaa ku uruuray macluumaad kooban oo ardayda ugu badan u baahan yihiin: diiwaangelinta, lacagaha, maktabadda iyo adeegga IT. Macluumaadku waa kooban yahay; xeerarka buuxa waxaa laga helaa dukumentiyada rasmiga ah. Haddii aadan halkan ka helin wixii aad u baahan tahay, la xiriir xafiiska la xiriira.
+
+Furitaanka diiwaangelinta
+Diiwaangelinta sannadka 2026-2027 waxay furan tahay 14-ka Sebtembar ilaa 2-da Oktoobar 2026. Ka dib taariikhdaas diiwaangelin lama aqbalo, haddii aan dekaanku siin ogolaansho gaar ah. Ha sugin maalmaha ugu dambeeya, maxaa yeelay dadku aad bay u badan yihiin.
+
+Daahitaanka lacag-bixinta
+Ardayga aan bixin qaybta labaad ee lacagta waqtigeedii looma yeeri karo imtixaannada semesterka labaad. Marka uu xaaladdiisa xafiiska maaliyadda ka hagaajiyo, wuu galaa imtixaanka. Ma jirto ganaax lacageed, laakiin natiijooyinka lama daabaco ilaa deynta la bixiyo.
+
+Soo celinta lacagta waxbarashada
+Lacagta waxbarashada lama soo celiyo marka casharradu bilowdaan, marka laga reebo khaladka xisaabinta ama ardayga shisheeye oo fiisaha laga diido. Codsiga waxaa la geeyaa xafiiska maaliyadda oo lala socdo caddeymaha. Lacagta waxaa la soo celiyaa soddon maalmood gudahood.
+
+Dheereynta amaahda buugga
+Amaahda buugga waa laba toddobaad. Waxaa mar keliya la dheereyn karaa toddobaad dheeraad ah, haddii aanu qof kale buugga kaydsan. Codsiga dheereynta waa in la sameeyaa kahor taariikhda dib-u-celinta, miiska ama madasha.
+
+Daahitaanka soo celinta buugga
+Daahitaanka buugga waxaa lagu ciqaabaa joojinta amaahda: maalin joojin ah maalin kasta oo daahitaan ah. Ardayga buug daahay haystaa ma helayo dukumentiyadiisa dhamaadka sannadka ilaa buugga la soo celiyo.
+
+Lumitaanka ama dhaawaca buugga
+Haddii aad buug lumiso ama aad dhaawacdo, waa inaad bedelaa nuqul isku daabacaad ah ama aad bixisaa qiimihiisa. Xisaabiyaha maktabadda ayaa kuu sheegi doona lacagta. Rasiidka waa inaad tusisaa si joojinta amaahda looga qaado.
+
+Beddelka cinwaanka iyo xaaladda madaniga
+Isbeddel kasta oo cinwaanka, lambarka taleefanka ama xaaladda madaniga ah waa in lagu sheegaa xafiiska diiwaangelinta hal bil gudahood, isagoo caddayn la socota. Ardaygu waa mas'uul ka ah saxnaanta macluumaadkiisa, maxaa yeelay ogeysiisyada imtixaanka waxaa loo diraa emailka la sheegay.
+
+Laabashada diiwaangelinta
+Ardayga diiwaangelintiisa ka laabanaya wuxuu codsi qoran u gudbiyaa xafiiska diiwaangelinta. Joojinta waa suurtagal oo keliya kahor bilowga casharrada. Marka casharradu bilowdaan, ardaygu wuxuu weli lacag-bixin ku leeyahay dhammaan lacagta.
+
+Xiriirka macallimiinta iyo emailka hay'adeed
+Arday kastaa wuxuu leeyahay cinwaan email oo hay'adeed. Waxaa loo isticmaalaa in lala xiriiro macallimiinta iyo maamulka. Ogeysiisyada rasmiga ah, sida isbeddelka jadwalka iyo yeerista imtixaanka, waxaa lagu soo diraa emailkan. Waa inaad ku eegtaa ugu yaraan laba jeer toddobaadkii.
+
+Dhiibista shaqooyinka
+Macallimiintu waxay madasha gelisaa casharrada iyo waraaqaha shaqada guriga. Ardaydu waxay shaqadooda ku soo dhiibaan internetka kahor taariikhda xirista. Ka dib taariikhdaas lama aqbalo, haddii macallinku aanu sabab ogolaan. Hubi in faylkaagu furmo kadib dhiibista.
+
+Caawinta farsamada
+Haddii dhibaato farsamo dhacdo, tag xafiiska adeegga IT, kaas oo furan 8:00 subaxnimo ilaa 3:00 galabnimo, Axad ilaa Khamiis. Sheeg magaca isticmaalaha iyo sharaxaad kooban oo dhibaatada ah. Codsiyada degdegga ah ee imtixaannada la xiriira marka hore ayaa la xalliyaa.
+
+Qolalka shaqada kooxeed
+Maktabadda waxay leedahay qolal loogu talagalay shaqada kooxeed. Waxaa la dhigan karaa miiska ilaa laba saacadood. Koox waa inay ka koobnaato ugu yaraan saddex qof, qolkuna wuu furmaa haddii aysan cidina imaan shan iyo toban daqiiqo gudahood. Aamusnaan ayaa looga baahan yahay qolalka akhriska.
+
+Muddada tababarka shaqada
+Tababarka shaqada wuxuu dhacaa semesterka afaraad. Wuxuu socdaa afar ilaa lix bilood oo waqti buuxa ah, shirkad, hay'ad dawladeed ama xarun cilmi-baaris. Wuxuu bilaabmaa marka semesterka saddexaad la gudbo, wuxuuna dhammaadaa ugu dambayn dhammaadka Ogosto.
+
+Difaaca warbixinta
+Difaaca warbixinta dhamaadka waxbarashada waxaa fadhiya guddi ka kooban saddex xubnood. Ardaygu wuxuu haystaa labaatan daqiiqo oo uu ku soo bandhigo shaqadiisa, ka dibna shan iyo toban daqiiqo oo su'aalo ah. Guddigu wuxuu markaas gooni u baaraa, natiijaduna waxay la ogeysiisaa ardayga isla maalinta.

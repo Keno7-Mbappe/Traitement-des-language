@@ -1,0 +1,39 @@
+# Projet 8 - Recherche semantique dans des documents universitaires (TALN, M2 IAMD)
+#
+# Installation :
+#   python -m venv .venv
+#   .venv\Scripts\activate            (Windows)   |   source .venv/bin/activate   (Linux, macOS)
+#   pip install -r requirements.txt
+#
+# Versions utilisees pour les essais : Python 3.13 sous Windows 11 (le notebook a ete execute sur Google Colab).
+# Verifie aussi dans un environnement vierge avec des versions plus recentes (Django 6.1, pandas 3.1, numpy 2.5,
+# scikit-learn 1.9, huggingface_hub 2.4) : les tests de l'application passent. nltk et spacy (notebook seulement),
+# ajoutes ensuite, ne faisaient pas partie de cette verification ; ils ont ete utilises avec les versions indiquees.
+
+# --- Notebook (partie TF-IDF) et application Django -------------------------------------------------------------
+numpy>=2.0            # essais avec 2.3.4
+pandas>=2.2           # 2.3.3
+scikit-learn>=1.5     # 1.8.0
+scipy>=1.13           # 1.17.0
+joblib>=1.4           # 1.5.3
+matplotlib>=3.9       # 3.10.8 (figures du notebook)
+pypdf>=5.0            # 6.10.2 (verification des PDF dans le notebook)
+# jupyter             # seulement pour ouvrir le notebook en local
+
+# --- Notebook : section 4 (pretraitement) et etude du pretraitement (section 6) ---------------------------------
+# Sur Colab, NLTK et spaCy sont deja installes ; le modele francais de spaCy est telecharge par la cellule si besoin.
+nltk>=3.9             # 3.10.3 - tokenizer wordpunct et racineurs Snowball (aucun telechargement de donnees)
+spacy>=3.7            # 3.8.16 - tokenizers fr / xx ; lemmes francais : python -m spacy download fr_core_news_sm
+# Cellule "tokenizers des modeles" (section 7) : transformers<5 (voir plus bas) ; sans lui la cellule l'indique et continue.
+
+# --- Application Django -----------------------------------------------------------------------------------------
+Django>=5.2,<7        # 6.0.5
+huggingface_hub>=0.30 # 0.36.2 - mode en ligne : vecteur de la question calcule par l'API Hugging Face
+requests>=2.31        # 2.32.5
+
+# --- Notebook : approche 2 (embeddings) - a installer SUR COLAB, pas obligatoire sur le PC ---------------------
+# Sur Colab, la premiere cellule du notebook les installe toute seule. En local, il faut beaucoup de memoire
+# (le chargement d'un modele echoue sur un PC dont la memoire est presque pleine).
+# transformers<5
+# sentence-transformers==5.1.2    # version testee avec transformers 4.x ; sur Colab, celle qui est installee convient
+# torch

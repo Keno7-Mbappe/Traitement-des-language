@@ -1,0 +1,49 @@
+# DOCUMENT SYNTHÉTIQUE rédigé pour le projet TALN (M2 IAMD), inspiré des règlements universitaires usuels (système LMD). Dates, montants et règles sont fictifs. Les lignes qui commencent par # sont ignorées par le programme.
+
+GUIDE DES STAGES ET DU MÉMOIRE DE MASTER
+Ce guide explique comment préparer, réaliser et valider le stage de fin d'études ainsi que le mémoire qui en rend compte. Il s'adresse aux étudiants de Master 2, à leurs encadrants académiques et aux organismes d'accueil. Il doit être lu avant le début de la recherche de stage et conservé pendant toute la durée de la mission.
+
+1. Durée et période du stage
+Le stage a lieu au semestre 4. Sa durée est de quatre à six mois, à temps plein, dans une entreprise, une administration ou un laboratoire de recherche. Il commence au plus tôt après la validation du semestre 3 et se termine au plus tard fin août, pour permettre le dépôt du mémoire avant les soutenances de septembre.
+
+2. Où effectuer son stage
+Le stage peut être effectué dans une entreprise privée, une administration publique, une organisation non gouvernementale ou un laboratoire de recherche, à Djibouti ou à l'étranger. L'organisme d'accueil doit proposer une mission en rapport avec l'intelligence artificielle ou l'analyse de données et désigner un maître de stage compétent.
+
+3. Recherche d'un stage
+Le service des stages aide les étudiants à trouver un stage : offres publiées sur la plateforme, forum des entreprises organisé en novembre et mise en relation avec des organismes partenaires. L'étudiant reste responsable de sa candidature. Il est conseillé de commencer les recherches dès le début du semestre 3.
+
+4. Candidature : CV, lettre et entretien
+Pour candidater, l'étudiant prépare un curriculum vitae d'une page, une lettre de motivation adaptée à chaque organisme et, si possible, un exemple de projet réalisé pendant le Master. Le service des stages organise en novembre des ateliers de préparation aux entretiens. L'étudiant informe le service dès qu'une proposition de stage lui est faite.
+
+5. Convention de stage
+Aucun stage ne peut commencer sans convention. La convention est signée par l'université, l'organisme d'accueil et l'étudiant. Elle fixe les dates, les missions et les conditions d'assurance. Un stage effectué sans convention n'est pas reconnu. La convention est établie par le service des stages au moins deux semaines avant le début du stage.
+
+6. Assurance et responsabilité
+L'étudiant en stage est couvert par l'assurance scolaire de l'université pour les accidents survenant sur le lieu de stage et pendant les trajets. L'organisme d'accueil reste responsable du matériel qu'il confie à l'étudiant. Tout accident doit être déclaré à la scolarité dans les quarante-huit heures.
+
+7. Gratification
+Lorsque le stage dure plus de deux mois, l'organisme d'accueil est encouragé à verser une gratification mensuelle, dont le montant minimal conseillé est de 15 000 FDJ. La gratification est mentionnée dans la convention. Elle ne constitue pas un salaire et ne crée aucun lien d'emploi entre l'étudiant et l'organisme.
+
+8. Encadrement
+L'étudiant est suivi par un encadrant académique de l'université et par un maître de stage dans l'organisme d'accueil. Une réunion de suivi a lieu au moins une fois par mois. L'encadrant académique relit les versions intermédiaires du mémoire et conseille l'étudiant sur la méthode. Le maître de stage évalue le travail réalisé sur le terrain.
+
+9. Choix du sujet
+Le sujet du stage est défini avec l'organisme d'accueil, puis validé par le responsable du Master avant la signature de la convention. Il doit comporter une question claire, des données accessibles et une évaluation mesurable. Les sujets purement administratifs ou sans lien avec la formation sont refusés.
+
+10. Rédaction du mémoire
+Le mémoire compte entre 40 et 60 pages, annexes non comprises. Il est rédigé en français, avec des références bibliographiques complètes. L'étudiant garde la trace de ses expériences pour qu'elles puissent être reproduites. Les figures et tableaux sont numérotés et commentés dans le texte.
+
+11. Plan du mémoire
+Le mémoire comprend une introduction, un état de l'art, la méthode, les résultats, une discussion, une conclusion et une bibliographie. Le chapitre sur la méthode décrit les données, la baseline et le protocole d'évaluation. La discussion analyse honnêtement les erreurs et les limites du travail.
+
+12. Dépôt du mémoire
+Le mémoire est déposé en version PDF sur la plateforme et en deux exemplaires papier à la scolarité, quinze jours avant la soutenance. Aucun dépôt n'est accepté après cette date. La page de garde mentionne le titre, l'auteur, l'encadrant académique, le maître de stage et l'année universitaire.
+
+13. Soutenance
+La soutenance a lieu devant un jury de trois membres. L'étudiant dispose de vingt minutes pour présenter son travail, suivies de quinze minutes de questions. Une démonstration de dix minutes au plus peut être incluse. Les membres du jury délibèrent ensuite à huis clos et communiquent la note à l'étudiant le jour même.
+
+14. Évaluation du stage
+La note finale du stage est composée du mémoire (40 %), de la soutenance (40 %) et de l'appréciation du maître de stage (20 %). Le stage est validé si la note finale est au moins égale à 10 sur 20. En cas d'échec, l'étudiant dépose un nouveau mémoire lors de la session de rattrapage.
+
+15. Plagiat et éthique
+Le mémoire est passé au logiciel de détection de plagiat avant la soutenance ; un taux de similarité supérieur à 20 % déclenche une vérification par l'encadrant. Tout plagiat avéré est traité comme une fraude, conformément au règlement des études. Les données confidentielles de l'organisme d'accueil sont anonymisées ou omises.

@@ -1,0 +1,200 @@
+{% extends "recherche/base.html" %}
+{% load static %}
+{% block classe %}page-recherche{% if resultats is not None %} avec-resultats{% endif %}{% endblock %}
+{% block scripts %}<script src="{% static 'recherche/js/carte.js' %}" defer></script>{% endblock %}
+
+{% block contenu %}
+<section class="hero {% if resultats is not None %}hero--compact{% endif %}" aria-labelledby="titre-page">
+  <div class="hero__fond" aria-hidden="true"></div>
+  <div class="conteneur hero__grille">
+    <div class="hero__texte">
+      {% if resultats is None %}<p class="surtitre monter" style="--d:0"><span class="surtitre__point"></span>Traitement automatique du langage · fr · en · so</p>{% endif %}
+      <h1 id="titre-page" class="monter" style="--d:1">Trouvez le <em class="souligne">sens<svg class="souligne__trait" viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9c40-8 86-9 130-4 30 3 58 3 84-1"/></svg></em>, pas seulement les mots.</h1>
+      {% if resultats is None %}
+      <p class="hero__chapeau monter" style="--d:2">Posez une question comme un étudiant, dans la langue de votre choix. Scriptorium retrouve le passage qui répond, même quand il n'emploie pas les mêmes mots. <span class="cache-mobile">Les trois meilleurs passages s'affichent avec les mots qu'ils partagent avec la question.</span></p>
+      {% endif %}
+
+      <form class="composeur monter" style="--d:3" method="get" action="{% url 'accueil' %}" role="search" data-composeur>
+        <label class="composeur__label" for="q">Votre question</label>
+        <div class="composeur__champ">
+          <svg class="ico composeur__loupe" aria-hidden="true"><use href="#i-search"/></svg>
+          <input id="q" type="search" name="q" value="{{ requete }}" maxlength="300" required autocomplete="off" spellcheck="false"
+                 enterkeyhint="search" data-champ placeholder="Ex. : Combien coûtent les frais de scolarité ?">
+          <button type="button" class="composeur__effacer" data-effacer aria-label="Effacer la question" hidden><svg class="ico" aria-hidden="true"><use href="#i-fermer"/></svg></button>
+          <kbd class="composeur__raccourci" aria-hidden="true" title="Appuyez sur / pour écrire">/</kbd>
+        </div>
+
+        <div class="jetons" data-jetons hidden>
+          <span class="jetons__titre">Jetons de la question</span>
+          <ul class="jetons__liste" data-jetons-liste aria-label="Mots détectés par le découpage du projet"></ul>
+        </div>
+
+        <fieldset class="methodes">
+          <legend>Méthode de recherche</legend>
+          <div class="methodes__liste">
+            {% for o in options %}
+            <label class="methode {% if not o.disponible %}methode--off{% endif %}" title="{{ o.libelle }}">
+              <input type="radio" name="methode" value="{{ o.cle }}" {% if o.cle == methode %}checked{% endif %} {% if not o.disponible %}disabled{% endif %}>
+              <span class="methode__carte">
+                <span class="methode__nom">{{ o.court }}{% if o.etiquette %}<em class="etiquette">{{ o.etiquette }}</em>{% endif %}</span>
+                <span class="methode__detail">{% if not o.disponible %}indisponible ici{% elif o.raison %}{{ o.raison }}{% else %}{{ o.detail }}{% endif %}</span>
+              </span>
+            </label>
+            {% endfor %}
+          </div>
+        </fieldset>
+
+        <div class="composeur__pied">
+          <p class="composeur__aide"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg>Une langue à la fois ou mélangées : le corpus est trilingue.</p>
+          <button class="btn btn--primaire" type="submit">
+            <span class="btn__texte">Rechercher</span>
+            <span class="btn__attente" aria-hidden="true"><svg class="ico tourne"><use href="#i-boucle"/></svg>Calcul du vecteur…</span>
+            <svg class="ico btn__fleche" aria-hidden="true"><use href="#i-fleche"/></svg>
+          </button>
+        </div>
+      </form>
+
+      {% if resultats is None %}
+      <div class="exemples monter" style="--d:4">{% include "recherche/_exemples.html" %}</div>
+      {% else %}
+      <details class="exemples-repli">
+        <summary><svg class="ico" aria-hidden="true"><use href="#i-etincelle"/></svg>Autres exemples à essayer<svg class="ico exemples-repli__chevron" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+        <div class="exemples">{% include "recherche/_exemples.html" %}</div>
+      </details>
+      {% endif %}
+    </div>
+
+    {% if resultats is None and carte %}
+    <div class="hero__visuel monter" style="--d:3">
+      {% include "recherche/_carte.html" %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% if erreur %}
+<div class="conteneur"><div class="bandeau bandeau--erreur" role="alert"><svg class="ico" aria-hidden="true"><use href="#i-alerte"/></svg><p>{{ erreur }}</p></div></div>
+{% endif %}
+
+{% if resultats is not None %}
+<section class="zone-resultats" aria-labelledby="titre-resultats" data-zone-resultats>
+  <div class="conteneur zone-resultats__grille">
+    <div class="zone-resultats__liste">
+      <h2 id="titre-resultats" class="visuellement-cache">Résultats de la recherche</h2>
+
+      {% if avertissement %}
+      <div class="bandeau bandeau--avertissement" role="status"><svg class="ico" aria-hidden="true"><use href="#i-alerte"/></svg><p>{{ avertissement }}</p></div>
+      {% endif %}
+
+      <div class="synthese">
+        <p class="synthese__texte">
+          {% if resultats %}<strong>{{ resultats|length }} passage{{ resultats|length|pluralize }}</strong> · méthode : {{ libelle_utilise }} · <span class="chiffre">{{ duree_ms }} ms</span>
+          {% else %}Méthode : {{ libelle_utilise }}{% endif %}
+        </p>
+        <ol class="trace" aria-label="Étapes du traitement de la question">
+          {% for e in etapes %}<li style="--i:{{ forloop.counter0 }}"><span class="trace__point">{{ forloop.counter }}</span><span class="trace__texte">{{ e }}</span></li>{% endfor %}
+        </ol>
+      </div>
+
+      {% for r in resultats %}
+      <article class="resultat" style="--i:{{ forloop.counter0 }};--p:{{ r.part }}" data-resultat data-id="{{ r.id }}">
+        <div class="resultat__rang" aria-label="Rang {{ r.rang }}"><span>{{ r.rang }}</span></div>
+        <div class="resultat__corps">
+          <header class="resultat__entete">
+            <h3 class="resultat__titre">{{ r.titre }}</h3>
+            <div class="resultat__meta">
+              <span class="pastille pastille--{{ r.langue }}"><i></i>{{ r.langue_nom }}</span>
+              <span class="meta"><svg class="ico" aria-hidden="true"><use href="#i-fichier"/></svg>{{ r.source }}</span>
+            </div>
+          </header>
+          <p class="resultat__texte" lang="{{ r.langue }}">{{ r.passage_html }}</p>
+          <footer class="resultat__pied">
+            <div class="similarite" role="img" aria-label="Score {{ r.score|floatformat:3 }}, soit {{ r.part }} % du meilleur score">
+              <span class="similarite__piste"><span class="similarite__barre"></span></span>
+              <span class="similarite__valeur">score {{ r.score|floatformat:3 }}</span>
+            </div>
+            <div class="communs">
+              {% if r.communs %}<span class="communs__titre">Mots communs</span>{% for m in r.communs %}<span class="jeton jeton--commun">{{ m }}</span>{% endfor %}
+              {% elif methode_utilisee == "tfidf" %}<span class="communs__aucun"><svg class="ico" aria-hidden="true"><use href="#i-etincelle"/></svg>Aucun mot entier en commun : appariement par groupes de lettres</span>
+              {% elif methode_utilisee == "embeddings" or methode_utilisee == "labse" %}<span class="communs__aucun"><svg class="ico" aria-hidden="true"><use href="#i-etincelle"/></svg>Aucun mot en commun : appariement par le sens</span>
+              {% else %}<span class="communs__aucun"><svg class="ico" aria-hidden="true"><use href="#i-etincelle"/></svg>Aucun mot entier en commun : lettres et sens combinés</span>{% endif %}
+            </div>
+            <button type="button" class="btn-texte" data-copier><svg class="ico" aria-hidden="true"><use href="#i-copier"/></svg><span>Copier</span></button>
+          </footer>
+        </div>
+      </article>
+      {% empty %}
+      <div class="vide">
+        <svg class="vide__dessin" viewBox="0 0 120 90" aria-hidden="true"><circle cx="52" cy="40" r="24"/><path d="m70 58 22 22"/><circle cx="30" cy="70" r="3"/><circle cx="96" cy="26" r="3"/><circle cx="104" cy="52" r="2"/></svg>
+        <p>Aucun résultat : aucun groupe de lettres de la question n'apparaît dans les passages.
+          Essayez avec d'autres mots, ou avec une méthode à embeddings si elle est disponible.</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if carte %}
+    <aside class="zone-resultats__carte" aria-label="Carte des passages">
+      {% include "recherche/_carte.html" %}
+    </aside>
+    {% endif %}
+  </div>
+</section>
+{% else %}
+
+<section class="bande" aria-labelledby="titre-chiffres">
+  <div class="conteneur">
+    <h2 id="titre-chiffres" class="visuellement-cache">Le corpus en chiffres</h2>
+    <ul class="chiffres" data-reveler>
+      <li><span class="chiffres__nombre" data-compter="{{ stats.passages }}">{{ stats.passages }}</span><span class="chiffres__legende">passages à retrouver</span></li>
+      <li><span class="chiffres__nombre" data-compter="{{ stats.documents|length }}">{{ stats.documents|length }}</span><span class="chiffres__legende">documents universitaires</span></li>
+      <li><span class="chiffres__nombre" data-compter="3">3</span><span class="chiffres__legende">langues : français, anglais, somali</span></li>
+      <li><span class="chiffres__nombre" data-compter="{{ stats.mots }}">{{ stats.mots|floatformat:"0g" }}</span><span class="chiffres__legende">mots dans le corpus</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="titre-chaine">
+  <div class="conteneur">
+    <header class="section__entete" data-reveler>
+      <p class="surtitre">Comment ça marche</p>
+      <h2 id="titre-chaine">De la question au passage, en quatre gestes</h2>
+      <p class="section__chapeau">Chaque passage du corpus est transformé en vecteur à l'avance. Il reste à faire de même pour la question, puis à comparer.</p>
+    </header>
+    <ol class="chaine" data-reveler>
+      <li class="chaine__etape" style="--i:0"><span class="chaine__icone"><svg class="ico" aria-hidden="true"><use href="#i-accolades"/></svg></span><h3>Nettoyer et découper</h3><p>Unicode propre, espaces normalisés, puis découpage en mots avec une expression régulière qui comprend les apostrophes de trois langues.</p></li>
+      <li class="chaine__etape" style="--i:1"><span class="chaine__icone"><svg class="ico" aria-hidden="true"><use href="#i-couches"/></svg></span><h3>Représenter</h3><p>Des groupes de lettres pour TF-IDF, ou un vecteur de 384 ou 768 nombres pour les modèles e5-small et LaBSE.</p></li>
+      <li class="chaine__etape" style="--i:2"><span class="chaine__icone"><svg class="ico" aria-hidden="true"><use href="#i-cible"/></svg></span><h3>Comparer</h3><p>La similarité cosinus classe les 232 passages ; le mélange pondère lettres et sens avec un poids α réglé sur 20 requêtes.</p></li>
+      <li class="chaine__etape" style="--i:3"><span class="chaine__icone"><svg class="ico" aria-hidden="true"><use href="#i-balance"/></svg></span><h3>Mesurer</h3><p>Precision@3, Hit@3 et MRR sur 63 requêtes de test que le réglage n'a jamais vues.</p></li>
+    </ol>
+    <p class="section__action" data-reveler><a class="btn btn--secondaire" href="{% url 'methode' %}">Lire la méthode<svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></a></p>
+  </div>
+</section>
+
+<section class="section section--teinte" aria-labelledby="titre-constats">
+  <div class="conteneur">
+    <header class="section__entete" data-reveler>
+      <p class="surtitre">Ce que le projet montre</p>
+      <h2 id="titre-constats">Trois résultats à retenir</h2>
+    </header>
+    <div class="constats" data-reveler>
+      <article class="constat" style="--i:0">
+        <p class="constat__valeur"><span data-compter="{{ meilleure_hit_pct }}">{{ meilleure_hit_pct }}</span><small> %</small></p>
+        <h3>Le mélange est le meilleur</h3>
+        <p>TF-IDF + e5-small place un bon passage dans le top 3 pour {{ meilleure_hit_pct }} % des questions de test, contre {{ base_hit_pct }} % pour TF-IDF seul : {{ ecart_requetes }} requêtes de plus sur {{ requetes_test }}. Le MRR va dans le même sens ({{ meilleure_mrr|floatformat:2 }} contre {{ base_mrr|floatformat:2 }}).</p>
+      </article>
+      <article class="constat" style="--i:1">
+        <p class="constat__valeur"><span data-compter="{{ somali_tfidf_pct }}">{{ somali_tfidf_pct }}</span><small> %</small></p>
+        <h3>Le somali reste le défi</h3>
+        <p>Sur les questions en somali, TF-IDF atteint {{ somali_tfidf_pct }} % de Hit@3 ; e5-small seul, {{ somali_e5_pct }} %. Le corpus somali n'a pas encore été relu par un locuteur.</p>
+      </article>
+      <article class="constat" style="--i:2">
+        <p class="constat__valeur"><span data-compter="{{ plus_gros_pct }}">{{ plus_gros_pct }}</span><small> %</small></p>
+        <h3>Plus gros ne veut pas dire meilleur</h3>
+        <p>LaBSE a quatre fois plus de paramètres qu'e5-small mais n'obtient que {{ plus_gros_pct }} % de Hit@3. Il est en revanche le plus à l'aise quand la réponse est dans une autre langue.</p>
+      </article>
+    </div>
+    <p class="section__action" data-reveler><a class="btn btn--secondaire" href="{% url 'resultats' %}">Voir tous les résultats<svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></a></p>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,25 @@
+# DOCUMENT SYNTHÉTIQUE rédigé pour le projet TALN (M2 IAMD), inspiré des règlements universitaires usuels (système LMD). Dates, montants et règles sont fictifs. Les lignes qui commencent par # sont ignorées par le programme.
+
+XEERKA ISTICMAALKA MADASHA WAXBARASHADA IYO QALABKA KOMBIYUUTARKA
+Xeerkani wuxuu qeexayaa sida loo isticmaalo qalabka kombiyuutarka ee jaamacadda: madasha waxbarashada, emailka, shabakadda Wi-Fi, qolalka kombiyuutarka iyo barnaamijyada. Aqbalidda xeerkan waa lagama maarmaan si akoon loo helo. Wuxuu ilaaliyaa isticmaalayaasha, xogta jaamacadda iyo shaqada shabakadda.
+
+1. Akoonka iyo magaca isticmaalaha
+Arday kasta wuxuu helaa akoon shakhsi ah markii la diiwaangelinayo. Magaca isticmaalaha waxaa la siiyaa kaarka ardayga. Akoonku waa shakhsi oo keliya: waa mamnuuc in magacaaga ama erayga sirta ah qof kale la amaahiyo. Ardaygu wuu mas'uul yahay wax kasta oo lagu sameeyo akoonkiisa.
+
+2. Xeerarka erayga sirta ah
+Erayga sirta ahi waa inuu ka koobnaado ugu yaraan sideed xaraf, oo ay ku jiraan xaraf weyn iyo lambar. Waa inuusan ku jirin magaca ardayga ama taariikhda dhalashadiisa. Waxaa lagu talinayaa in lagu beddelo lix biloodba mar, aan meel muuqata lagu qorin, lana siin qof, xitaa haddii uu sheegto inuu xubin ka yahay maamulka.
+
+3. Qaabka faylasha
+Shaqooyinka waxaa la dhiibaa qaab PDF, marka macallinku wax kale aanu codsan. Cabbirka faylku waa inuusan ka badnaan 20 MB. Magaca faylka waxaa loo qoraa NAAN_Magac_Maaddo. Faylasha la cufay waa la aqbalaa koodhka, haddii aanay ku jirin faylal la fuliyo ama xog shakhsi ah.
+
+4. Barnaamijyada iyo liisanka
+Jaamacaddu waxay siisaa ardayda barnaamijyo bilaash ah (Python, Jupyter, R, LibreOffice) oo ku rakiban kombiyuutarrada qolalka, iyo liisanno waxbarasho oo loogu talagalay qaar ka mid ah barnaamijyada ganacsiga. Liisannadu waa shakhsi, waxayna ansax yihiin inta waxbarashadu socoto. Waa mamnuuc in barnaamij liisan leh la nuqulo ama la qaybiyo.
+
+5. Macluumaadka shakhsiga ah
+Jaamacaddu waxay macluumaadka shakhsiga ah ee ardayda (aqoonsi, natiijooyin, xiriirin) u isticmaashaa maaraynta waxbarashada oo keliya. Looma gudbiyo cid saddexaad oggolaansho la'aan. Arday kasta wuxuu codsan karaa inuu eego ama sixo macluumaadkiisa xafiiska diiwaangelinta. Diiwaanka xiriirka waxaa la hayaa laba iyo toban bilood.
+
+6. Isticmaalka mamnuuca ah
+Waa mamnuuc: jabsiga (hacking), soo dejinta waxyaabo sharci darro ah, in la diro fariimo caayid ah ama xayeysiis, iyo in la galo goobo sharciga ka hor imanaya. Sidoo kale waa mamnuuc in aalado jaamacadda loo isticmaalo ganacsi gaar ah ama in shabakadda la carqaladeeyo, tusaale ahaan iyadoo router gaar ah lagu xirayo.
+
+7. Ciqaabaha
+Ku xad-gudubka xeerka wuxuu keeni karaa joojinta akoonka, yeeris guddiga edbinta, iyo, haddii dambi weyn jiro, laga saaro jaamacadda. Falalka dambiga ah waxaa loo sheegaa hay'adaha awoodda leh. Ardayga la eedeeyay waa la dhegaysanayaa kahor ciqaab kasta.

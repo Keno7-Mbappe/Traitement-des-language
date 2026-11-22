@@ -1,0 +1,20 @@
+{% extends "recherche/base.html" %}
+{% block titre %}Page introuvable{% endblock %}
+{% block classe %}page-erreur{% endblock %}
+
+{% block contenu %}
+<section class="erreur-page" aria-labelledby="titre-page">
+  <div class="conteneur erreur-page__interieur">
+    <p class="erreur-page__code" aria-hidden="true">404</p>
+    <h1 id="titre-page">Ce passage n'est dans aucun document</h1>
+    <p class="erreur-page__texte">La page demandée n'existe pas, ou a changé d'adresse. Rien n'est perdu : la recherche, la méthode, les résultats et le corpus sont à un clic.</p>
+    <ul class="jetons__liste jetons__liste--centre" aria-hidden="true">
+      <li class="jeton">page</li><li class="jeton">introuvable</li><li class="jeton jeton--commun">404</li>
+    </ul>
+    <p class="erreur-page__actions">
+      <a class="btn btn--primaire" href="{% url 'accueil' %}"><span class="btn__texte">Retour à la recherche</span><svg class="ico btn__fleche" aria-hidden="true"><use href="#i-fleche"/></svg></a>
+      <a class="btn btn--secondaire" href="{% url 'methode' %}">Lire la méthode</a>
+    </p>
+  </div>
+</section>
+{% endblock %}

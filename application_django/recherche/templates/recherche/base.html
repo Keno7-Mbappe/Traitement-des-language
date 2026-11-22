@@ -1,0 +1,101 @@
+{% load static %}<!doctype html>
+<html lang="fr" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{% block titre %}Recherche dans les documents universitaires{% endblock %} · Scriptorium</title>
+  <meta name="description" content="{% block description %}Recherche sémantique dans des documents universitaires fictifs en français, anglais et somali : TF-IDF, embeddings multilingues et mélange. Projet 8 de TALN, Master 2 IAMD.{% endblock %}">
+  <meta name="theme-color" content="#F4EDE1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#17100B" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/svg+xml" href="{% static 'recherche/favicon.svg' %}">
+  <link rel="preload" href="{% static 'recherche/fonts/Fraunces-normal.woff2' %}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{% static 'recherche/fonts/DMSans-normal.woff2' %}" as="font" type="font/woff2" crossorigin>
+  <script>document.documentElement.classList.add("js");try{var m={clair:"light",light:"light",sombre:"dark",dark:"dark"},t=m[new URLSearchParams(location.search).get("theme")]||localStorage.getItem("scriptorium-theme");if(t==="dark"||t==="light"){document.documentElement.dataset.theme=t}}catch(e){}</script>
+  <link rel="stylesheet" href="{% static 'recherche/css/app.css' %}">
+  <script src="{% static 'recherche/js/app.js' %}" defer></script>
+  {% block scripts %}{% endblock %}
+</head>
+<body class="{% block classe %}{% endblock %}">
+{% include "recherche/_icones.html" %}
+<div class="progression" aria-hidden="true"></div>
+<a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+<header class="entete" data-entete>
+  <div class="conteneur entete__barre">
+    <a class="marque" href="{% url 'accueil' %}" aria-label="Scriptorium, retour à la recherche">
+      <svg class="marque__logo" viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="9" class="logo-fond"/>
+        <path d="M10.500 21.500 16 9.500l5.500 12M10.500 21.500h11" class="logo-trait"/>
+        <circle cx="10.500" cy="21.500" r="2.400" class="logo-noeud"/>
+        <circle cx="21.500" cy="21.500" r="2.400" class="logo-noeud"/>
+        <circle cx="16" cy="9.500" r="2.900" class="logo-noeud logo-noeud--accent"/>
+      </svg>
+      <span class="marque__texte"><span class="marque__nom">Scriptorium</span><span class="marque__ligne">Recherche sémantique</span></span>
+    </a>
+
+    <nav class="nav" id="nav-principale" aria-label="Navigation principale">
+      <div class="nav__interieur">
+        {% with page=request.resolver_match.url_name %}
+        <a class="nav__lien" href="{% url 'accueil' %}" {% if page == 'accueil' %}aria-current="page"{% endif %}><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>Recherche</a>
+        <a class="nav__lien" href="{% url 'methode' %}" {% if page == 'methode' %}aria-current="page"{% endif %}><svg class="ico" aria-hidden="true"><use href="#i-reseau"/></svg>Méthode</a>
+        <a class="nav__lien" href="{% url 'resultats' %}" {% if page == 'resultats' %}aria-current="page"{% endif %}><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg>Résultats</a>
+        <a class="nav__lien" href="{% url 'corpus' %}" {% if page == 'corpus' %}aria-current="page"{% endif %}><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg>Corpus</a>
+        {% endwith %}
+        <a class="nav__lien nav__lien--api" href="{% url 'api_recherche' %}?q=bibliotheque%20horaires"><svg class="ico" aria-hidden="true"><use href="#i-accolades"/></svg>API JSON</a>
+      </div>
+    </nav>
+
+    <div class="entete__outils">
+      <button type="button" class="btn-icone" data-theme-toggle aria-label="Changer de thème (clair ou sombre)" title="Thème clair / sombre">
+        <svg class="ico ico--soleil" aria-hidden="true"><use href="#i-soleil"/></svg>
+        <svg class="ico ico--lune" aria-hidden="true"><use href="#i-lune"/></svg>
+      </button>
+      <button type="button" class="btn-icone burger" data-menu aria-expanded="false" aria-controls="nav-principale" aria-label="Ouvrir le menu">
+        <svg class="ico ico--menu" aria-hidden="true"><use href="#i-menu"/></svg>
+        <svg class="ico ico--fermer" aria-hidden="true"><use href="#i-fermer"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="contenu" tabindex="-1">
+{% block contenu %}{% endblock %}
+</main>
+
+<footer class="pied">
+  <div class="conteneur pied__grille">
+    <div class="pied__marque">
+      <a class="marque marque--pied" href="{% url 'accueil' %}" aria-label="Scriptorium, accueil">
+        <svg class="marque__logo" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="9" class="logo-fond"/>
+          <path d="M10.500 21.500 16 9.500l5.500 12M10.500 21.500h11" class="logo-trait"/>
+          <circle cx="10.500" cy="21.500" r="2.400" class="logo-noeud"/><circle cx="21.500" cy="21.500" r="2.400" class="logo-noeud"/>
+          <circle cx="16" cy="9.500" r="2.900" class="logo-noeud logo-noeud--accent"/>
+        </svg>
+        <span class="marque__texte"><span class="marque__nom">Scriptorium</span></span>
+      </a>
+      <p>Retrouver le bon passage d'un document universitaire, en français, en anglais et en somali, même quand la question n'emploie pas les mêmes mots.</p>
+    </div>
+    <nav class="pied__liens" aria-label="Pages du site">
+      <h2>Le site</h2>
+      <a href="{% url 'accueil' %}">Recherche</a>
+      <a href="{% url 'methode' %}">Méthode</a>
+      <a href="{% url 'resultats' %}">Résultats</a>
+      <a href="{% url 'corpus' %}">Corpus</a>
+      <a href="{% url 'api_recherche' %}?q=bibliotheque%20horaires">API JSON</a>
+    </nav>
+    <div class="pied__notes">
+      <h2>À savoir</h2>
+      <p>Les documents sont <strong>fictifs</strong> (écrits pour le projet) : règles, dates et montants sont inventés.</p>
+      {% if service_en_ligne == "huggingface" %}<p>Méthodes à embeddings en ligne : le texte de la question (pas les documents) est envoyé à Hugging Face pour calculer son vecteur.</p>{% elif service_en_ligne == "serveur" %}<p>Méthodes à embeddings en ligne : le texte de la question (pas les documents) est envoyé au serveur d'embeddings du projet (Colab) pour calculer son vecteur.</p>{% endif %}
+    </div>
+  </div>
+  <div class="conteneur pied__bas">
+    <span>Projet 8 · TALN · Master 2 IAMD · Université de Djibouti · 2026</span>
+    <span>Kenedid Yacin Boulaleh &amp; Abdoulrazack Houssein Mahamoud</span>
+  </div>
+</footer>
+
+<div class="toasts" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

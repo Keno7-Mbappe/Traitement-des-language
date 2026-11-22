@@ -1,0 +1,9 @@
+Polices incluses dans l'application (pour qu'elle s'affiche à l'identique sans connexion Internet)
+
+- Fraunces (titres)           : Undercase Type, distribuée par Google Fonts
+- DM Sans (texte)             : Colophon Foundry et Google, distribuée par Google Fonts
+- JetBrains Mono (jetons, scores) : JetBrains, distribuée par Google Fonts
+
+Ces trois polices sont publiées sous la licence SIL Open Font License, version 1.1 (usage, copie et redistribution libres,
+y compris avec un logiciel). Texte de la licence : https://openfontlicense.org
+Les fichiers sont les sous-ensembles « latin » au format WOFF2 fournis par Google Fonts, sans modification.

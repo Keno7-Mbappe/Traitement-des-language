@@ -1,0 +1,79 @@
+# DOCUMENT SYNTHÉTIQUE rédigé pour le projet TALN (M2 IAMD), inspiré des règlements universitaires usuels (système LMD). Dates, montants et règles sont fictifs. Les lignes qui commencent par # sont ignorées par le programme.
+
+RÈGLEMENT DES ÉTUDES ET DES EXAMENS – MASTER (LMD)
+Le présent règlement s'applique à tous les étudiants inscrits en Master à la Faculté. Il précise l'organisation des études, le contrôle des connaissances, la validation des semestres, le fonctionnement des jurys ainsi que les droits et les devoirs des étudiants. Tout étudiant est réputé en avoir pris connaissance lors de son inscription et s'engage à le respecter pendant toute la durée de ses études.
+
+Article 1 – Organisation des études
+Le Master est organisé en quatre semestres. Chaque semestre représente 30 crédits européens (ECTS), soit 120 crédits pour l'ensemble du cycle. Les enseignements sont regroupés en unités d'enseignement (UE) composées de cours magistraux, de travaux dirigés (TD) et de travaux pratiques (TP). Un semestre comprend quinze semaines d'enseignement, suivies d'une période d'examens. Le volume horaire de chaque module est précisé dans le syllabus de la formation.
+
+Article 2 – Inscription pédagogique
+Après son inscription administrative, l'étudiant effectue son inscription pédagogique auprès du département : il choisit ses unités d'enseignement optionnelles et s'inscrit aux modules du semestre. Cette démarche doit être terminée avant la fin de la deuxième semaine de cours. Aucun changement d'option n'est accepté au-delà de ce délai, sauf autorisation écrite du chef de département. Un étudiant qui n'est pas inscrit pédagogiquement ne peut pas se présenter aux examens du module.
+
+Article 3 – Langue d'enseignement
+Les enseignements sont dispensés en français. Certains supports de cours, articles scientifiques et sujets de travaux pratiques peuvent être en anglais, et les étudiants doivent être capables de les lire. Les travaux écrits, les examens et les mémoires sont rédigés en français, sauf autorisation de l'enseignant responsable du module. Des séances de remise à niveau en langue sont proposées pendant le premier semestre aux étudiants qui en font la demande.
+
+Article 4 – Assiduité
+La présence aux cours, aux TD et aux TP est obligatoire. Une feuille de présence est signée à chaque séance. Au bout de trois absences non justifiées dans une même matière, l'étudiant reçoit un avertissement écrit du chef de département. Il peut en outre être exclu de l'examen de cette matière. Les absences justifiées ne sont pas sanctionnées, mais elles ne dispensent pas l'étudiant de rattraper le contenu manqué.
+
+Article 5 – Justification des absences
+Toute absence doit être justifiée auprès de la scolarité. En cas de maladie, l'étudiant dépose un certificat médical dans un délai de trois jours après son retour en cours. Un certificat remis après ce délai n'est pas pris en compte. Les autres motifs (décès d'un proche, convocation officielle, événement exceptionnel) sont justifiés par une pièce officielle. La scolarité transmet ensuite l'information aux enseignants concernés.
+
+Article 6 – Retards en cours
+L'étudiant qui arrive plus de quinze minutes après le début d'une séance peut se voir refuser l'accès à la salle par l'enseignant. Trois retards dans une même matière sont comptés comme une absence non justifiée. Les retards dus à un cas de force majeure, comme une panne de transport ou un événement météorologique, peuvent être excusés par l'enseignant sur présentation d'une explication.
+
+Article 7 – Contrôle des connaissances
+La note finale de chaque module est la combinaison du contrôle continu et de l'examen terminal. Le contrôle continu (interrogations, travaux pratiques, projets) compte pour 40 % et l'examen terminal pour 60 %. Les notes sont exprimées sur 20 et arrondies au demi-point. Le mode de calcul exact est communiqué par l'enseignant au début du module.
+
+Article 8 – Contrôle continu
+Le contrôle continu comprend au moins deux évaluations par module : interrogation écrite, travail pratique noté, exposé ou projet. Les dates sont annoncées au moins une semaine à l'avance. L'absence non justifiée à une évaluation du contrôle continu entraîne la note de zéro pour cette évaluation. Les notes de contrôle continu sont communiquées aux étudiants dans un délai de quinze jours.
+
+Article 9 – Sessions d'examen
+Il existe deux sessions d'examen par semestre : la session normale, organisée à la fin des cours, et la session de rattrapage, réservée aux étudiants qui n'ont pas validé une matière. Seules les matières non validées sont repassées ; la meilleure des deux notes est retenue. Les dates des deux sessions figurent dans le calendrier universitaire et sont affichées au moins quinze jours avant le début des épreuves.
+
+Article 10 – Déroulement des épreuves
+Les étudiants doivent se présenter à l'épreuve munis de leur carte d'étudiant ou d'une pièce d'identité, quinze minutes avant le début. Aucun candidat n'est admis après trente minutes de retard, et aucun ne peut quitter la salle avant la fin de la première heure. Les places sont attribuées par les surveillants. Chaque candidat signe la liste d'émargement à l'entrée et au moment de remettre sa copie.
+
+Article 11 – Matériel et documents autorisés
+Aucun document n'est autorisé pendant un examen, sauf indication contraire portée sur le sujet. Lorsque la calculatrice est autorisée, elle ne doit pas être programmable. Les téléphones portables, montres connectées et écouteurs doivent être éteints et déposés à l'avant de la salle avec les sacs. La détention d'un appareil allumé pendant l'épreuve est assimilée à une tentative de fraude.
+
+Article 12 – Absence à un examen
+L'étudiant qui ne se présente pas à une épreuve sans justificatif valable reçoit la note de zéro. En cas d'absence justifiée par un certificat médical ou une pièce officielle déposée dans les trois jours, l'étudiant est convoqué à une épreuve de remplacement organisée lors de la session de rattrapage. Il n'existe pas d'épreuve de remplacement pour les évaluations du contrôle continu.
+
+Article 13 – Fraude et plagiat
+Toute fraude ou tentative de fraude lors d'une épreuve, ainsi que le plagiat dans un devoir ou un mémoire, entraîne l'annulation de l'épreuve et peut donner lieu à une sanction prononcée par le conseil de discipline, pouvant aller jusqu'à l'exclusion de l'université. Constituent notamment une fraude la communication entre candidats, l'usage de documents non autorisés et la substitution de personne. Le surveillant dresse un procès-verbal et saisit le président du jury.
+
+Article 14 – Correction et anonymat
+Les copies d'examen sont rendues anonymes avant la correction : le nom de l'étudiant est caché par un numéro d'anonymat. La correction est assurée par l'enseignant responsable du module, qui remet les notes au secrétariat dans un délai de quinze jours après l'épreuve. Les notes sont affichées au département et publiées sur la plateforme pédagogique. Elles ne sont définitives qu'après la délibération du jury.
+
+Article 15 – Validation et compensation
+Un semestre est validé lorsque la moyenne générale des UE est égale ou supérieure à 10 sur 20. Une compensation est possible entre les UE d'un même semestre à condition que la note de chaque UE soit au moins égale à 7 sur 20. Les UE validées sont définitivement acquises. La compensation n'est pas possible entre deux semestres différents.
+
+Article 16 – Capitalisation des crédits
+Une UE validée donne droit à l'ensemble de ses crédits, qui restent acquis pour toute la durée des études, même si l'étudiant change d'année ou d'établissement. Les crédits sont inscrits sur le relevé de notes. Un étudiant qui n'a pas validé une UE doit la repasser l'année suivante, sans avoir à repasser les UE déjà acquises.
+
+Article 17 – Jury et délibérations
+À la fin de chaque semestre, un jury composé des enseignants du département se réunit pour délibérer. Il vérifie les notes, applique la compensation et proclame les résultats. Les décisions du jury sont souveraines. Le procès-verbal de délibération est signé par le président du jury et conservé à la scolarité.
+
+Article 18 – Mentions
+Le diplôme est délivré avec une mention selon la moyenne générale obtenue sur l'ensemble du cycle : passable de 10 à moins de 12, assez bien de 12 à moins de 14, bien de 14 à moins de 16, très bien à partir de 16 sur 20. La mention figure sur le diplôme et sur le relevé de notes final.
+
+Article 19 – Réclamations
+L'étudiant qui conteste une note peut demander la révision de sa copie. La demande est adressée par écrit au chef de département dans un délai de cinq jours ouvrables après l'affichage des résultats. La copie est alors examinée par un second correcteur, qui ne connaît pas la note initiale. La note peut être confirmée, relevée ou abaissée.
+
+Article 20 – Passage et redoublement
+Le passage de Master 1 en Master 2 est autorisé aux étudiants ayant validé au moins 48 crédits sur 60. Les autres peuvent redoubler une seule fois, en conservant le bénéfice des UE validées. L'inscription en Master 2 est subordonnée à la validation complète du Master 1 à l'issue de la session de rattrapage.
+
+Article 21 – Exclusion pour résultats insuffisants
+L'étudiant qui n'a pas validé son année après deux redoublements ne peut plus se réinscrire dans le même Master. Il peut toutefois présenter une demande de réorientation auprès du doyen. Le conseil de la Faculté examine chaque cas en tenant compte des circonstances et du parcours de l'étudiant.
+
+Article 22 – Suspension des études
+Un étudiant peut demander une suspension de ses études d'une année pour raison de santé, raison familiale grave ou projet professionnel. La demande écrite est déposée à la scolarité avant le 30 novembre. L'étudiant conserve les UE validées et reprend ses études l'année suivante dans la même situation. Une seule suspension est accordée pendant le cycle.
+
+Article 23 – Aménagements pour les étudiants en situation de handicap
+Les étudiants en situation de handicap peuvent bénéficier d'aménagements pour les examens : temps supplémentaire d'un tiers, salle séparée, aide technique. La demande est déposée à la scolarité au moins un mois avant les épreuves, avec un certificat médical ou un justificatif de l'autorité compétente. Les enseignants sont informés des aménagements accordés.
+
+Article 24 – Relevé de notes et diplôme
+Le relevé de notes est délivré à la scolarité dans les trente jours suivant la délibération. Une attestation de réussite provisoire peut être remise dès la proclamation des résultats. Le diplôme définitif est délivré dans un délai de trois mois après la fin du cycle, sur présentation de la carte d'étudiant et d'une pièce d'identité.
+
+Article 25 – Dispositions finales
+Les cas non prévus par le présent règlement sont examinés par le conseil de la Faculté. Le règlement est affiché au secrétariat et publié sur la plateforme pédagogique. Il peut être modifié chaque année par décision du conseil ; les modifications sont portées à la connaissance des étudiants avant le début des cours.
