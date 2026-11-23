@@ -235,6 +235,7 @@ def resultats(request):
     return render(request, "recherche/resultats.html", {
         "methodes": methodes, "requetes_test": donnees_resultats.REQUETES_TEST,
         "meilleure": meilleure, "base": base, "hasard": hasard,
+        "labse_melange_p": next(m for m in methodes if m["cle"] == "melange_labse")["toutes"]["p"],
         "ecart_requetes": round((meilleure["toutes"]["hit"] - base["toutes"]["hit"]) * donnees_resultats.REQUETES_TEST["toutes"]),
         "colonnes_langues": langues["colonnes"], "lignes_langues": lignes_langues,
         "entre_langues": donnees_resultats.ENTRE_LANGUES,

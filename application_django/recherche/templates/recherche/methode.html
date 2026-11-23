@@ -172,7 +172,7 @@
     <div class="cartes-methodes" data-reveler>
       {% for m in methodes %}
       <article class="carte-methode {% if m.etiquette == 'meilleur' %}carte-methode--meilleur{% endif %}" style="--i:{{ forloop.counter0 }}">
-        <header><h3>{{ m.court }}</h3>{% if m.etiquette %}<em class="etiquette">{{ m.etiquette }}</em>{% endif %}</header>
+        <header><h3>{{ m.court }}</h3>{% if m.etiquette %}<em class="etiquette">{% if m.etiquette == 'meilleur' %}meilleur MRR{% else %}{{ m.etiquette }}{% endif %}</em>{% endif %}</header>
         <p class="carte-methode__libelle">{{ m.libelle }}</p>
         <ol class="carte-methode__etapes">{% for e in m.etapes %}<li>{{ e }}</li>{% endfor %}</ol>
         <a class="lien-fleche" href="{% url 'accueil' %}?q=Combien%20co%C3%BBtent%20les%20frais%20de%20scolarit%C3%A9%20en%20Master%20%3F&amp;methode={{ m.cle }}">Essayer<svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></a>

@@ -165,7 +165,19 @@ Remarques : sur l'offre gratuite, le service s'endort après environ 15 minutes 
 | **Mélange TF-IDF + e5-small** | **0,84** | **0,79** | **0,94** | **0,89** |
 | Mélange TF-IDF + LaBSE | 0,83 | 0,74 | 0,89 | 0,79 |
 
-« Toutes langues » : sont bons tous les passages qui expriment le fait attendu, quelle que soit leur langue. « Même langue » : seulement ceux écrits dans la langue de la requête.
+« Toutes langues » : sont bons tous les passages qui expriment le fait attendu, quelle que soit leur langue. « Même langue » : seulement ceux écrits dans la langue de la requête. La mesure se fait par passage (comme l'extension demandée, top 3 des passages), ce qui est plus strict que par document : un bon passage trouvé entraîne son document.
+
+La Precision@3 (part des 3 passages affichés qui sont bons) :
+
+| Méthode | toutes langues : P@3 | même langue : P@3 |
+|---|---|---|
+| TF-IDF (baseline) | 0,27 | 0,30 |
+| Embeddings e5-small | 0,30 | 0,28 |
+| Embeddings LaBSE | 0,29 | 0,18 |
+| Mélange TF-IDF + e5-small | 0,30 | **0,32** |
+| Mélange TF-IDF + LaBSE | **0,35** | 0,30 |
+
+Comment lire ces résultats : le mélange TF-IDF + e5-small a le meilleur MRR (0,79 contre 0,74 pour le mélange LaBSE et 0,71 pour la baseline). En Hit@3, il gagne 3 requêtes sur la baseline mais une seule sur le mélange LaBSE (écart de 0,016, sous notre seuil de 0,03 : une requête change Hit@3 de 0,016). En Precision@3 « toutes langues », le mélange LaBSE est premier : il place en moyenne 1,27 bon passage dans le top 3 par requête réussie, contre 1,06, car cette métrique récompense le fait de ramener plusieurs versions du même fait dans plusieurs langues. Le choix entre les deux mélanges dépend donc de la métrique ; en « même langue », le mélange TF-IDF + e5-small est premier dans les trois.
 Le détail (par langue, par type, requêtes croisées, 89 cas difficiles avec leur cause) est dans le notebook et dans le rapport.
 
 **Ce que le prétraitement a montré** (notebook, sections 4 à 7) :
@@ -175,7 +187,7 @@ Le détail (par langue, par type, requêtes croisées, 89 cas difficiles avec le
 - La langue d'une requête se détecte à 0,976 d'accuracy (TF-IDF caractères + Naive Bayes, contre 0,337 pour la classe majoritaire).
 - **Aucune des 18 variantes testées** (accents, casse, mots vides, racines, lemmes, bornes de fréquence, Jaccard) n'améliore le MRR sur dev d'au moins 0,05 : le pipeline TF-IDF est donc gardé tel quel. Les mêmes 5 requêtes dev échouent avec 16 de ces variantes sur 18 : leur problème est le vocabulaire, pas le prétraitement.
 - Le hasard donne Hit@3 ≈ 0,03.
-- Le somali est le plus fragmenté par les tokenizers des deux modèles (1,95 sous-mot par mot pour e5-small contre 1,49 en français). L'espace de e5-small se range **par langue** (96 % des voisins sont dans la même langue), celui de LaBSE **par sens** : cela explique que LaBSE soit meilleur entre langues et e5-small dans la langue de la question.
+- Le somali est le plus fragmenté par les tokenizers des deux modèles (1,95 sous-mot par mot pour e5-small contre 1,49 en français). L'espace de e5-small se range **par langue** (96 % des voisins sont dans la même langue), celui de LaBSE **par sens** : cela va dans le sens de LaBSE meilleur entre langues (MRR, sur 9 requêtes seulement : une tendance, pas une preuve) et d'e5-small dans la langue de la question.
 
 ## 7. Limites
 

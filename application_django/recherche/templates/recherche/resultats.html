@@ -15,7 +15,7 @@
 
     <ul class="kpi monter" style="--d:3">
       <li class="kpi__carte kpi__carte--vedette">
-        <span class="kpi__etiquette">Meilleure méthode</span>
+        <span class="kpi__etiquette">En tête en MRR</span>
         <span class="kpi__nombre"><span data-compter="{{ meilleure.toutes.hit }}" data-decimales="2">{{ meilleure.toutes.hit|floatformat:2 }}</span></span>
         <span class="kpi__legende">Hit@3 · {{ meilleure.nom }}</span>
       </li>
@@ -43,7 +43,7 @@
     <header class="section__entete" data-reveler>
       <p class="surtitre">Comparaison</p>
       <h2 id="titre-comparaison">Les cinq méthodes face au hasard</h2>
-      <p class="section__chapeau">Le mélange TF-IDF + e5-small passe devant, de {{ ecart_requetes }} requêtes sur {{ requetes_test.toutes }} seulement en Hit@3. Une requête change le Hit@3 de 0,016 : l'écart de MRR est plus net, mais il reste modeste.</p>
+      <p class="section__chapeau">Le mélange TF-IDF + e5-small passe devant, de {{ ecart_requetes }} requêtes sur {{ requetes_test.toutes }} seulement en Hit@3. Une requête change le Hit@3 de 0,016 : l'écart de MRR est plus net, mais il reste modeste. En Precision@3 (toutes_langues), c'est le mélange TF-IDF + LaBSE qui est premier ({{ labse_melange_p|floatformat:2 }}) : il ramène plusieurs traductions du même fait dans le top 3.</p>
     </header>
 
     <div class="comparateur" data-comparateur data-scenario="toutes" data-metrique="hit" data-reveler>
@@ -72,7 +72,7 @@
             data-p-toutes="{{ m.toutes.p }}" data-hit-toutes="{{ m.toutes.hit }}" data-mrr-toutes="{{ m.toutes.mrr }}"
             data-p-meme="{{ m.meme.p }}" data-hit-meme="{{ m.meme.hit }}" data-mrr-meme="{{ m.meme.mrr }}"
             style="--v:{{ m.toutes.hit }};--i:{{ forloop.counter0 }}">
-          <div class="barre-ligne__nom"><strong>{{ m.nom }}</strong>{% if m.meilleur %}<em class="etiquette">meilleur</em>{% elif m.cle == "tfidf" %}<em class="etiquette etiquette--sobre">baseline</em>{% endif %}<span>{{ m.detail }}</span></div>
+          <div class="barre-ligne__nom"><strong>{{ m.nom }}</strong>{% if m.meilleur %}<em class="etiquette">meilleur MRR</em>{% elif m.cle == "tfidf" %}<em class="etiquette etiquette--sobre">baseline</em>{% endif %}<span>{{ m.detail }}</span></div>
           <div class="barre-ligne__piste"><span class="barre-ligne__barre"></span></div>
           <output class="barre-ligne__valeur" data-valeur>{{ m.toutes.hit|floatformat:2 }}</output>
         </li>
@@ -109,7 +109,7 @@
     <header class="section__entete" data-reveler>
       <p class="surtitre">Par langue</p>
       <h2 id="titre-langues">Le somali renverse le classement</h2>
-      <p class="section__chapeau">Hit@3 selon la langue de la question (scénario toutes_langues). Les embeddings sont meilleurs en anglais ; en somali, TF-IDF reprend la tête, et le mélange le suit.</p>
+      <p class="section__chapeau">Hit@3 selon la langue de la question (scénario toutes_langues ; une requête change une case de 0,04 à 0,06). Les embeddings sont meilleurs en anglais ; en somali, TF-IDF reprend la tête, et le mélange le suit.</p>
     </header>
     <div class="tableau-defile" data-reveler>
       <table class="tableau tableau--chaleur">
@@ -132,7 +132,7 @@
       </article>
       <article class="encart">
         <h3>Quand la réponse est dans une autre langue</h3>
-        <p>Pour 9 questions dont la réponse n'existe que dans une autre langue, LaBSE a le meilleur MRR, loin devant TF-IDF qui ne partage aucune lettre utile :</p>
+        <p>Pour 9 questions dont la réponse n'existe que dans une autre langue, LaBSE a le meilleur MRR (e5-small a le meilleur Hit@3), loin devant TF-IDF qui ne partage aucune lettre utile :</p>
         <ul class="barres barres--fines" data-barres-simples>
           {% for e in entre_langues %}<li class="barre-ligne" style="--v:{{ e.mrr }};--i:{{ forloop.counter0 }}"><div class="barre-ligne__nom"><strong>{{ e.nom }}</strong></div><div class="barre-ligne__piste"><span class="barre-ligne__barre"></span></div><output class="barre-ligne__valeur">{{ e.mrr|floatformat:2 }}</output></li>{% endfor %}
         </ul>

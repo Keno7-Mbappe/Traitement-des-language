@@ -184,7 +184,7 @@
     <div class="constats" data-reveler>
       <article class="constat" style="--i:0">
         <p class="constat__valeur"><span data-compter="{{ meilleure_hit_pct }}">{{ meilleure_hit_pct }}</span><small> %</small></p>
-        <h3>Le mélange est le meilleur</h3>
+        <h3>Le mélange fait mieux que la baseline</h3>
         <p>TF-IDF + e5-small place un bon passage dans le top 3 pour {{ meilleure_hit_pct }} % des questions de test, contre {{ base_hit_pct }} % pour TF-IDF seul : {{ ecart_requetes }} requêtes de plus sur {{ requetes_test }}. Le MRR va dans le même sens ({{ meilleure_mrr|floatformat:2 }} contre {{ base_mrr|floatformat:2 }}).</p>
       </article>
       <article class="constat" style="--i:1">
